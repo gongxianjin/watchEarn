@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Friends list</title>
+    <link rel="stylesheet" href="../css/cssRest.css" />
+    <link rel="stylesheet" href="../js/swiper/swiper-3.4.1.min.css" />
+    <link rel="stylesheet" href="../css/tudiList.css?t=0602.02" />
+	<link rel="stylesheet" href="../js/dropload/dropload.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div id="app" v-cloak>
+			
+	<header>
+		<!--<img src="__STATIC__images/c_arrow_left_color.png" onclick="history.go(-1)"/>-->
+		<ul id="nav" class="tab">
+			<li class="item"><a href="javascript:">Friends list</a></li>
+			<li class="item"><a href="javascript:"> 2<sup>nd</sup>-class friends list</a></li>
+		</ul>
+	</header>
+	<p class="h96"></p>
+		<div class="content">
+			<div class="lists">
+			 <div class="total">
+				<ul>
+					 <li>
+						 <p><span id="name">Friends</span></p>
+						 <em id="number" v-text="apprentice_total">0</em>
+					 </li>
+					 <li>
+						 <p><span> Coins from Friend</span></p>
+						 <em id="gold" v-text="gold_tribute_total_all">0</em>
+					 </li>
+				</ul>
+			 </div>
+		 <div class="incomeList">
+			<div v-if="list.length<=0">
+				<img src="../images/none.png" class="none"/>
+				<p class="go">No friends ? Invite friends now !</p>
+			</div>
+			<ul id="tudi" v-else>
+				<li v-for="(item,index) in list">
+					<img :src="item.user.headimg" />
+					<p><span v-text="item.user.nickname"></span><label v-text="item.user.create_date">2018</label></p>
+					<em v-text="'+'+item.gold_tribute_total"></em>
+				</li>
+			</ul>
+		 </div>
+		</div>
+
+			<div class="lists">
+				<div class="total">
+					<ul id="total1">
+						<li>
+							<p><span>2<sup>nd</sup> class -Friends</span></p>
+							<em v-text="apprentice_total1">0</em>
+						</li>
+						<li>
+							<p><span> Coins from Friend</span></p>
+							<em v-text="gold_tribute_total_all1">0</em>
+						</li>
+					</ul>
+				</div>
+				<div class="incomeList">
+					<div v-if="tusun.length<=0">
+						<img src="../images/none.png" class="none"/>
+						<p class="go">No friends ? Invite friends now !</p>
+					</div>
+					<ul  v-else>
+						<li v-for="(item,index) in tusun">
+							<img :src="item.user.headimg" />
+							<p><span v-text="item.user.nickname"></span><label v-text="item.user.create_date">2018</label></p>
+							<em v-text="'+'+item.gold_tribute_total"></em>
+						</li>
+					</ul>
+				</div>
+			</div>
+	</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/dropload/dropload.min.js"></script>
+<script type="text/javascript">
+   
+    setupWebViewJavascriptBridge(function(bridge) {
+       //personal.refreshUrl(false);
+    //bridge.callHandler('refreshUrl', {'key':'value'}, function responseCallback(responseData) {})
+    bridge.callHandler('login', {'key':'value'}, function responseCallback(responseData) {
+        dataParam = JSON.parse(responseData);
+        var params = '';
+        var data = dataParam;
+        for (key in data) {
+            params += key + '=' + data[key] + '&';
+        }
+        var pam = params.substr(0, params.length - 1);
+        dataParam = pam;
+       var app = new Vue({
+       	el:'#app',
+       	data:function(){
+       		return{
+       			list:[],//徒弟列表
+       			apprentice_total:'',//徒弟个数
+       			gold_tribute_total_all:'',//徒弟金币总数
+                tusun:[],//徒孙列表
+                apprentice_total1:'',//徒孙个数
+                gold_tribute_total_all1:'',//徒孙金币总数
+                page:1,
+                limit:10,
+                page1:1,
+                limit1:10,
+       		}
+       	},
+           mounted:function(){
+               this.$nextTick(function(){
+                   var itemIndex = 0;
+                   var tab1LoadEnd = false;
+                   var tab2LoadEnd = false;
+                   // tab
+                   $('.tab .item').on('click',function(){
+                       var $this = $(this);
+                       itemIndex = $this.index();
+                       $this.addClass('cur').siblings('.item').removeClass('cur');
+                       $('.lists').eq(itemIndex).show().siblings('.lists').hide();
+
+                       // 如果选中菜单一
+                       if(itemIndex == '0'){
+                           // 如果数据没有加载完
+                           if(!tab1LoadEnd){
+                               // 解锁
+                               dropload.unlock();
+                               dropload.noData(false);
+                           }else{
+                               // 锁定
+                               dropload.lock('down');
+                               dropload.noData();
+                           }
+                           // 如果选中菜单二
+                       }else if(itemIndex == '1'){
+                           if(!tab2LoadEnd){
+                               // 解锁
+                               dropload.unlock();
+                               dropload.noData(false);
+                           }else{
+                               // 锁定
+                               dropload.lock('down');
+                               dropload.noData();
+                           }
+                       }else if(itemIndex == '2'){
+                           if(!tab3LoadEnd){
+                               // 解锁
+                               dropload.unlock();
+                               dropload.noData(false);
+                           }else{
+                               // 锁定
+                               dropload.lock('down');
+                               dropload.noData();
+                           }
+                       }
+                       // 重置
+                       dropload.resetload();
+                   });
+
+                   var type = getUrlParam("type");
+                   if(type==1){
+                       $('.tab .item').eq(0).addClass('cur').siblings('.item').removeClass('cur');
+                       $('.lists').eq(0).show().siblings('.lists').hide();
+                       itemIndex=0;
+                   }else if(type==2){
+                       $('.tab .item').eq(1).addClass('cur').siblings('.item').removeClass('cur');
+                       $('.lists').eq(1).show().siblings('.lists').hide();
+                       itemIndex=1
+                   }
+
+
+                   var counter = 1;
+                   // 每页展示10个
+                   var num = 10;
+                   var pageStart = 0,pageEnd = 0;
+                   // dropload
+                   var dropload = $('.content').dropload({
+                       scrollArea : window,
+                       autoLoad:true,
+                       domDown : {
+                           domNoData  : '<div class="dropload-noData">No more record!</div>'
+                       },
+                       loadDownFn : function(me){
+                           //vm.getHome(me,vm.page);
+                           // 加载菜单一的数据
+                           if(itemIndex == '0'){
+                               //dataParam.type=1;
+                               //徒弟列表
+                               dataParam.page=app.page;
+                               dataParam.type=1;
+                               dataParam.pageSize=app.limit;
+                               $.post(global.url+'Apprentice/apprenticeList',dataParam)
+                                   .then(function(res){
+                                       app.page++;
+                                       app.apprentice_total = res.data.apprentice_total;
+                                       app.gold_tribute_total_all = res.data.gold_tribute_total_all;
+                                       app.list = app.list.concat(res.data.apprentice_list)
+                                       if(res.data.apprentice_list.length < app.limit ){
+                                           // 数据加载完
+                                           tab1LoadEnd = true;
+                                           // 锁定
+                                           me.lock();
+                                           // 无数据
+                                           me.noData();
+                                       }
+                                       //console.log(me);
+                                       me.resetload();
+                                   })
+
+                           }else if(itemIndex == '1'){
+                               //徒孙列表
+                               dataParam.type=2;
+                               dataParam.page=app.page1;
+                               dataParam.pageSize=app.limit1;
+                               $.post(global.url+'Apprentice/apprenticeList',dataParam)
+                                   .then(function(res){
+                                       app.page1++;
+                                       console.log(res.data);
+                                       app.tusun = app.tusun.concat(res.data.apprentice_list);
+                                       app.apprentice_total1 = res.data.apprentice_total;
+                                       app.gold_tribute_total_all1 = res.data.gold_tribute_total_all;
+                                       if(res.data.apprentice_list.length < app.limit1 ){
+                                           // 数据加载完
+                                           tab2LoadEnd = true;
+                                           // 锁定
+                                           me.lock();
+                                           // 无数据
+                                           me.noData();
+
+                                       }
+                                       // 为了测试，延迟1秒加载
+                                       setTimeout(function(){
+                                           // $('.lists').eq(itemIndex).append(result);
+                                           // 每次数据加载完，必须重置
+                                           me.resetload();
+                                       },1000);
+                                       //console.log(me);
+                                       //me.resetload();
+                                   })
+
+                           }
+                       }
+                   });
+               })
+		   }
+       })
+	})})
+
+</script>
+</html>

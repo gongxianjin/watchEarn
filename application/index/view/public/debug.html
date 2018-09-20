@@ -1,0 +1,33 @@
+ <div id="debug">调试打印...</div>
+
+<style>
+
+#debug{ width: 80%; margin: 0 auto; word-break:break-all; word-wrap:break-word;}
+
+</style>
+
+<script type="text/javascript" src="__STATIC__js/jquery.min.js" ></script>
+
+<script type="text/javascript">
+
+	window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) {
+
+    var str = ("错误信息：" + errorMessage + "出错文件：" + scriptURI + "出错行号：" + lineNumber + "出错列号：" + columnNumber + "错误详情：" + errorObj);
+
+      debug(str);
+
+    }
+
+  function debug(str){
+
+          if(typeof str =="object"){
+
+              str = JSON.stringify(str);
+
+          }
+
+          $("#debug").append(str+"<br>");
+
+      }
+
+</script>

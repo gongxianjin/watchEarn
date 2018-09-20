@@ -1,0 +1,1 @@
+<?phpnamespace app\model;use think\Model;class CommentVideo extends Model{    protected $createTime = 'pub_datetime';    protected $updateTime = '';    public function geTopCommentsList($videoId)    {        return $this            ->where('video_id','in',$videoId)            ->where('top','eq',1)            ->select();    }}

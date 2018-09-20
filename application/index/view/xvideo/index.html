@@ -1,0 +1,200 @@
+<html style="font-size: 36px;">
+<head>
+<title>{$video.title}</title>
+<meta charset="utf-8" />
+<meta name="description" content=" Download Watch & Earn for more videos" />
+<meta name="keywords" content="Watch & Earn" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="__STATIC__video.js/css/style.css?s=180612" />
+<!--<link rel="stylesheet" href="__STATIC__video.js/css/video-js.css?s=20180309" />-->
+<script type="text/javascript" src="__STATIC__js/jquery.min.js?s=20180309" ></script>
+<!--<script type="text/javascript" src="__STATIC__video.js/js/video.min.js?s=20180309"></script>
+<script type="text/javascript" src="__STATIC__video.js/js/videojs-ie8.min.js?s=20180309"></script>-->
+<style type="text/css">
+.video-js .vjs-control-bar {display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.jn-video{height: 200px; width: 100%; overflow: hidden;}
+#ju-video{height: 200px; width: 100%; }
+#vedeoIframe{position: fixed;top: 0;width:100%;max-width: none;z-index: 999999;left: 0;right: 0;overflow: hidden;height:5.8rem;background: #000000}
+#main{margin-toP:5.8rem;}
+</style>
+</head>
+<body class="page-detail detail--video" style="font-size: 12px;">
+<div id="vedeoIframe">
+    <iframe id="myiframe"  src="{:url('Xvideo/video',['id'=>$video['id']])}" width="100%" height="100%" scrolling="no" ></iframe>
+</div>
+
+<div id="main">
+<div class="video-container">
+  <div class="video-video-container-xigua-video">
+   <!--  <div class="jn-video">
+      <video id="ju-video" class="video-js vjs-default-skin vjs-big-play-centered" controls poster="http://pb9.pstatp.com/large/6b4a000096ce14582c85"  x5-video-player-type="h5" loop="loop" x-webkit-airplay="true" >
+        <source src="{$video.video_url}" type="video/mp4">
+      </video>
+    </div>  -->
+    <div class="video-download-new" onclick="downloadApp();">
+      <div class="video-download-banner-new">
+          More great videos on Watch & Earn<span class="open"  onclick="downloadApp();">OPEN</span>
+      </div>
+    </div>
+<p class="desc">Watch&Earn is an app that you can make money online by watching videos and news.</p>
+<!--    <div class="video-header-container">
+      <div class="video-info">
+        <div class="info-title">
+          <h1 class="line1">{$video.title}</h1>
+        </div>
+      </div>
+      <div class="share-card-container" onclick="downloadApp();">
+        <span class="share-card-avatar-container">
+            <img class="share-card-avatar" src="{$user.headimg|default='http://s3.pstatp.com/growth/video_mobile_detail/image/user_icon@3x.0aworU0U.png'}" />
+        </span>
+      <span class="share-card-text"><div>
+        <p class="share-card-name">{$user.nickname}</p>Invite you to use
+        <span class="share-card-toutiao"> Watch & Earn</span> Watch more videos
+      </div></span>
+      <span class="share-card-btn">Open</span>
+      </div>
+    </div>
+  </div>-->
+
+  <div>
+   <div class="recommendation-container" style="min-height: 117px;">
+<!--    <div class="appOnly-container">
+     <div>
+      <div class="feed-list-container-new-video appOnly-container">
+       <div class="list-content clearfix">
+        {foreach $middleList as $middle}
+        <section class="feed-list appOnly feed-list&#45;&#45;two middle_mode app_special feed-item&#45;&#45;right">
+         <a href="javascript:void(0)" onclick="downloadApp();" class="article_link clearfix" >
+          <div class="list_img_holder ">
+           <img src="{$middle['video_cover']}" />
+           <div class="video-time">
+            <span>{$middle['video_duration']}<em style="color:#fff; float:right; font-weight:normal; padding-right:10px;"> Download Watch & Earn for more videos</em></span>
+           </div>
+          </div>
+          <div class="list_text_holder">
+           <p class="dotdot line2">{$middle['title']|default='Funny videos'}</p>
+          </div></a>
+        </section>
+        {/foreach}
+       </div>
+      </div>
+     </div>
+    </div>-->
+      <!-- <script type="text/javascript">
+           ( function() {
+               if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+               var unit = {"calltype":"async[2]","publisher":"hangkezhiyu","width":320,"height":50,"sid":"Chitika Default"};
+               var placement_id = window.CHITIKA.units.length;
+               window.CHITIKA.units.push(unit);
+               document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+           }());
+       </script>
+       <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>-->
+
+    <div class="relatedNews-container">
+     <h2 class="list-header"> Recommend</h2>
+     <div>
+      <div class="feed-list-container-new-video relatedNews-container">
+       <div class="list-content clearfix">
+
+        {foreach $guessLikeList as $guessLike}
+        <section data-group-id="6484362935794663950" class="feed-list feed-list--image-left relatedNews related_news">
+         <a href="javascript:void(0)" onclick="downloadApp();" class="article_link clearfix">
+          <div class="list_img_holder ">
+           <img src="{$guessLike['video_cover']}"/>
+           <div class="time" title="184">{$guessLike['video_duration']}
+           </div>
+          </div>
+          <div class="list_text_holder">
+           <p class="title">{$guessLike['title']|default='Funny videos'}</p>
+          <!-- <div class="item_info">
+            <span class="app_special space">Download Watch & Earn for more videos</span>
+           </div>-->
+          </div></a>
+        </section>
+        {/foreach}
+
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+<!--   <div class="bottom-banner-container" onclick="downloadApp();">
+    <div class="bottom-banner-content  false">
+     <span class="content-left">
+         <span class="line"></span>
+         <span class="title">Watch & Earn</span>
+         <span class="line"></span>
+         <span class="see-comments"> Watch videos & Earn $ now</span>
+     </span>
+     <span class="content-right">
+         <span class="download-btn">Open</span>
+     </span>
+    </div>
+   </div>-->
+
+  </div>
+ </div>
+</div>
+<!--统计-->
+{include file="public/videoall"}
+
+{switch name="to_platfrom" }
+    {case value="twitter"}
+      {include file="public/videotwitter"}
+    {/case}
+    {case value="linkin"}
+      {include file="public/videolinkin"}
+    {/case}
+    {case value="facebook"}
+       {include file="public/videofacebook"}
+    {/case}
+{/switch}
+
+
+<script type="text/javascript">
+/*$(function(){
+  var options = {
+    controls: true,
+    autoplay: true,
+    preload: 'auto',
+    poster: "http://pb9.pstatp.com/large/6b4a000096ce14582c85"
+  };
+  var player = videojs('ju-video', options, function onPlayerReady() {
+    // this.play();
+    this.on('ended', function() {
+      videojs.log('this video ended');
+    });
+  });
+});
+*/
+function downloadApp(){
+
+    var href = "{:url('index/xvideo/download')}";
+    var toPlatfrom = getQueryVariable('to_platfrom');
+
+    if (toPlatfrom!='')
+    {
+        href = href+"?to_platfrom="+toPlatfrom;
+    }
+
+    window.location.href= href;
+
+}
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] === variable) {
+            return pair[1];
+        }
+    }
+    return '';
+}
+
+</script>
+</body>
+</html>

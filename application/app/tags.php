@@ -1,0 +1,1 @@
+<?php//行为return [    'module_init'      => [        'app\app\behavior\Check'    ]];

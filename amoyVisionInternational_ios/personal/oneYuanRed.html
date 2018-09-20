@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>1$ reward</title>
+    <link rel="stylesheet" href="../css/cssRest.css" />
+    <link rel="stylesheet" href="../js/swiper/swiper-3.4.1.min.css" />
+    <link rel="stylesheet" href="../css/oneRed.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="app" v-cloak>
+	    <div class="oneTop">
+  	  <img src="../images/new_user_top.png" class="bg"/>
+  	  <img src="../images/ic_launcher.png" class="one"/>
+  	  <p class="first">Award $1</p>
+  	  <p class="money"><em>1.00</em>$</p>
+  	</div>
+  	<div class="oneBottom">
+  	<!--	<img src="../images/small_redbag.png" />-->
+
+        <template v-if="isLogin">
+            <a href="task_hall.html">Earn  Now</a>
+        </template>
+
+        <template v-else>
+            <a onclick="gotoAPPLogin()">Sign Up to earn now</a>
+        </template>
+  	</div>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript">
+
+
+    var app = new Vue({
+  	el:'#app',
+  	data:function(){
+  		return{
+  			isLogin:true
+  		}		
+  	},
+  	created:function(){
+  		var _this = this;
+  		//判断是否登录
+  		instance.post(global.url+'User/index',pam)
+  		.then(function(res){
+  			if(res.data.data.login_flag){
+  				_this.isLogin = true;
+  			}else{
+  				_this.isLogin = false;
+  			}
+  		})
+  	}
+  });
+
+</script>
+
+</html>

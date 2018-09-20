@@ -1,0 +1,276 @@
+*{
+	vertical-align: middle;
+	padding:0;
+	margin:0;
+}
+body{
+	background: #fff;
+	text-align: center;
+}
+header{
+	width:100%;
+	background: #FFFFFF;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	position: fixed;
+	top:0;
+	border-bottom: 1px solid #EBEBEB;
+	padding: 0 .3rem;
+	left: 0;
+	box-sizing:  border-box;
+}
+.h96{
+	height:.96rem;
+}
+header img{
+	width:.24rem;
+	height:.38rem;
+	position: absolute;
+	left:.3rem;
+	top: .25rem;
+}
+header ul{
+	width:100%;
+	display: inline-block;
+}
+header ul li{
+	width:50%;
+	text-align: center;
+	font-size: .3rem;
+	float: left;
+}
+header ul li a{
+	display: inline-block;
+	padding: .3rem 0rem;
+	color:#999999;
+}
+header ul li.active a{
+	color:#ff5645;
+	border-bottom: 0.04rem solid #ff5645;
+}
+
+.total{
+	border: .02rem solid #e4e4e4;
+	width:6.9rem;
+	height:1.6rem;
+	margin:.3rem;
+	background: #ffff;
+	border-radius: .4rem;
+}
+.total ul{
+	width:100%;
+	display: inline-block;
+	/*display: none;*/
+}
+.total li{
+	float: left;
+	text-align: center;
+	width:50%;
+	margin: .3rem 0;
+}
+.total li:first-child{
+	border-right: 1px solid #E5E5E5;
+	box-sizing: border-box;
+}
+.total li p{margin-bottom: .2rem;}
+.total li p img{
+	width: .28rem;
+	height: .28rem;
+}
+.total li p span{
+	color:#999999;
+	font-size: .26rem;
+}
+.total li em{
+	color: #F6C885;
+	font-size: .6rem;
+	font-weight:  normal;
+}
+.incomeList{
+	background: #FFFFFF;
+	/*display: none;*/
+}
+.incomeList .name{
+	height:1rem;
+	border-bottom: 1px solid #E5E5E5;
+}
+.incomeList .name p{
+	display: inline-block;
+	margin-left: 1.5rem;
+	float:  left;
+}
+.incomeList .name p span{
+	color:#222222;
+	font-size:.36rem;
+	display: block;
+	margin-bottom: .1rem;
+	margin-top: .05rem;
+}
+.incomeList .name em{
+	color:#ff5645;
+	float: right;
+	margin-right: .3rem;
+	font-size: .36rem;
+	line-height: 1rem;
+}
+.incomeList .name p label{
+	color:#999;
+	font-size:.26rem;
+}
+.incomeList ul{
+	padding:0 .3rem;
+}
+.incomeList ul li{
+	border-bottom: 1px solid #E5E5E5;
+	display: inline-block;
+	width: 100%;
+}
+.incomeList ul li img{
+	width: .7rem;
+	height: .7rem;
+	float: left;
+	margin: .2rem 0;
+	border-radius: 50%;
+}
+.incomeList ul li p{
+	display: inline-block;
+	margin-left: .2rem;
+	float:  left;
+	text-align:  left;
+}
+.incomeList ul li p span{
+	color: #333333;
+	font-size: .3rem;
+	display: block;
+	margin-bottom: .2rem;
+	margin-top: .2rem;
+}
+.incomeList ul li p label{
+	color:#999;
+	font-size: .24rem;
+}
+.incomeList ul li em{
+	color: #EB3E44;
+	float: right;
+	/* margin-right: .3rem; */
+	font-size: .36rem;
+	line-height: 1rem;
+}
+.block{
+	display: block!important;
+}
+.none{
+	width: 1.54rem;
+	height: 2.28rem;
+	margin:0 auto;
+	margin-top: 1.4rem;
+}
+.go{
+	font-size: .26rem;
+	color:#999999;
+	margin-top:.3rem;
+}
+
+
+.tab{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.tab .item{
+	display: block;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	width: 100%;
+	font-size: .3rem;
+	text-align: center;
+	color: #333;
+	text-decoration: none;
+}
+.tab .cur{
+	height: 44px;
+	color: #ff3c3c;
+	position:  relative;
+}
+.tab .cur a{
+	color:#F6C885;
+}
+.tab .cur a:after{
+	content: " ";
+	width:1rem;
+	border-bottom:.07rem solid #F6C885;
+	display:  inline-block;
+	position:  absolute;
+	bottom: .1rem;
+	left: 1.34rem;
+	-webkit-border-radius: .03rem;
+	-moz-border-radius: .03rem;
+	border-radius: .03rem;
+}
+.content{
+	background-color: #fff;
+}
+.content .item{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align:center;
+	-webkit-box-align:center;
+	box-align:center;
+	-webkit-align-items:center;
+	align-items:center;
+	padding:3.125%;
+	border-bottom: 1px solid #ddd;
+	color: #333;
+	text-decoration: none;
+}
+.content .item img{
+	display: block;
+	width: 40px;
+	height: 40px;
+	border:1px solid #ddd;
+}
+.content .item h3{
+	display: block;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	width: 100%;
+	max-height: 40px;
+	overflow: hidden;
+	line-height: 20px;
+	margin: 0 10px;
+	font-size: 1.2rem;
+}
+.content .item .date{
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	color: #999;
+}
+.opacity{
+	-webkit-animation: opacity 0.3s linear;
+	animation: opacity 0.3s linear;
+}
+@-webkit-keyframes opacity {
+	0% {
+		opacity:0;
+	}
+	100% {
+		opacity:1;
+	}
+}
+@keyframes opacity {
+	0% {
+		opacity:0;
+	}
+	100% {
+		opacity:1;
+	}
+}

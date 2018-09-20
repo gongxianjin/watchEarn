@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>download</title>
+    <link rel="stylesheet" href="/css/cssRest.css" />
+</head>
+<style>
+    .download{position: relative;}
+    .download img{width:100%;height:auto;}
+    .download a{
+        display: inline-block;
+        color: #333333;
+        background: #f6c885;
+        position: absolute;
+        width: 5rem;
+        height: .8rem;
+        font-size: .46rem;
+        left: 50%;
+        margin-left: -2.5rem;
+        top: 11.2rem;
+        text-align: center;
+        line-height: .8rem;
+        border-radius: .2rem;
+    }
+    #code{
+        color: #333333;
+        font-weight: bold;
+        position: absolute;
+        text-align: center;
+        top: 8.2rem;
+        font-size: .36rem;
+        border: 0.04rem solid #333;
+        height: 0.6rem;
+        display: inline-block;
+        width: 2rem;
+        line-height: .6rem;
+        border-radius: .08rem;
+        left: 50%;
+        margin-left: -1rem;
+    }
+</style>
+<body>
+<div class="download">
+    <img src="/img/download.png"/>
+    <span id="code">{$invitationCode}</span>
+    <a href="javascript:void(0)">Download</a>
+</div>
+</body>
+<!--统计-->
+{include file="public/shareall"}
+
+{switch name="to_platfrom" }
+    {case value="twitter"}
+      {include file="public/sharetwitter"}
+    {/case}
+    {case value="linkin"}
+      {include file="public/sharelinkin"}
+    {/case}
+    {case value="facebook"}
+       {include file="public/sharefacebook"}
+    {/case}
+{/switch}
+<script type="text/javascript" src="/js/jquery.min.js" ></script>
+
+<script type="text/javascript">
+    $(".download a").click(function(){
+
+        window.location.href = "https://play.google.com/store/apps/details?id=com.sven.huinews.international&referrer=invitation_code";
+
+    });
+
+
+</script>
+</html>

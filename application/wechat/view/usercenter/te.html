@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>11</title>
+</head>
+<script type="text/javascript">
+	history.pushState({page : 'state1'},'state','#state1');
+	window.onpopstate = function(event) {
+      if (event.state.page === 'state1') {
+        WeixinJSBridge.call('closeWindow');
+      }
+    }
+</script>
+<body>
+	2151545
+</body>
+</html>

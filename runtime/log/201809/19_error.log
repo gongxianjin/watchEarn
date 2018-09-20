@@ -1,0 +1,57 @@
+---------------------------------------------------------------
+[ 2018-09-19T00:51:02-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/report_comment
+[ error ] [0]致命错误: Class 'app\common\service\CommentVideoReport' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoCommentReport.php:55]
+---------------------------------------------------------------
+[ 2018-09-19T00:52:09-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/report_comment
+[ error ] [0]致命错误: Class 'app\common\service\CommentVideoReport' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoCommentReport.php:55]
+---------------------------------------------------------------
+[ 2018-09-19T00:52:44-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/report_comment
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T00:55:14-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/report_comment
+[ error ] [401][E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoCommentReport.php:53]
+---------------------------------------------------------------
+[ 2018-09-19T00:55:41-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/report_comment
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T01:38:47-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'create_time' in order clause is ambiguous[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Connection.php:388]
+---------------------------------------------------------------
+[ 2018-09-19T01:39:14-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'create_time' in order clause is ambiguous[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Connection.php:388]
+---------------------------------------------------------------
+[ 2018-09-19T01:39:34-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [8]未定义数组索引: user_id[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:147]
+---------------------------------------------------------------
+[ 2018-09-19T01:44:27-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'create_time' in order clause is ambiguous[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Connection.php:388]
+---------------------------------------------------------------
+[ 2018-09-19T01:45:18-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]method not exist:think\db\Query->hidden[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:94]
+---------------------------------------------------------------
+[ 2018-09-19T02:32:02-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Cannot access protected property think\paginator\driver\Bootstrap::$total[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T02:34:14-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Cannot access protected property think\paginator\driver\Bootstrap::$total[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T02:34:41-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Cannot access protected property think\paginator\driver\Bootstrap::$total[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T02:35:25-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Cannot access protected property think\paginator\driver\Bootstrap::$total[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:132]
+---------------------------------------------------------------
+[ 2018-09-19T02:39:18-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1&size=2
+[ error ] [0]致命错误: Cannot access protected property think\paginator\driver\Bootstrap::$currentPage[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:132]
+---------------------------------------------------------------
+[ 2018-09-19T02:41:50-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1&size=2
+[ error ] [0]致命错误: Cannot access protected property think\paginator\driver\Bootstrap::$total[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T02:43:08-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1&size=2
+[ error ] [8]Trying to get property 'total' of non-object[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T02:43:41-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1&size=2
+[ error ] [0]致命错误: Cannot access protected property think\paginator\driver\Bootstrap::$total[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:131]
+---------------------------------------------------------------
+[ 2018-09-19T03:11:35-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433&du_type=2&page=1&order=up
+[ error ] [0]简洁模式下不能获取数据总数[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Paginator.php:165]

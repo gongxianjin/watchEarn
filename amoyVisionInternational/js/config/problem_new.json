@@ -1,0 +1,113 @@
+{
+  "state": 200,
+  "problem": [
+    {
+      "id": 1,
+      "title": "什么是淘新闻？",
+      "problemContent": [
+        {
+          "isTrue": false,
+          "content": "学习工具"
+        },
+        {
+          "isTrue": false,
+          "content": "赚钱软件"
+        },
+        {
+          "isTrue": true,
+          "content": "资讯阅读软件"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "淘新闻为什么会给用户发钱？",
+      "problemContent": [
+        {
+          "isTrue": false,
+          "content": "有钱任性"
+        },
+        {
+          "isTrue": false,
+          "content": "宣传噱头"
+        },
+        {
+          "isTrue": true,
+          "content": "收益分成"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "金币汇率受什么影响？",
+      "problemContent": [
+        {
+          "isTrue": false,
+          "content": "老板心情"
+        },
+        {
+          "isTrue": false,
+          "content": "阅读内容"
+        },
+        {
+          "isTrue": true,
+          "content": "平台收益"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "如何增加收益？",
+      "problemContent": [
+        {
+          "isTrue": false,
+          "content": "好好学习"
+        },
+        {
+          "isTrue": true,
+          "content": "收取徒弟"
+        },
+        {
+          "isTrue": false,
+          "content": "囤积金币"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "使用中遇到问题怎么办？",
+      "problemContent": [
+        {
+          "isTrue": false,
+          "content": "大声呼叫"
+        },
+        {
+          "isTrue": true,
+          "content": "查看常见问题"
+        },
+        {
+          "isTrue": false,
+          "content": "我不知道"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "邀请好友有什么好处？",
+      "problemContent": [
+        {
+          "isTrue": true,
+          "content": "收益暴涨"
+        },
+        {
+          "isTrue": false,
+          "content": "为了炫耀"
+        },
+        {
+          "isTrue": false,
+          "content": "我不知道"
+        }
+      ]
+    }
+  ]
+}

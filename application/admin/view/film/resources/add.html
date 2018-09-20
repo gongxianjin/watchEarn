@@ -1,0 +1,77 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="c-name" class="control-label col-xs-12 col-sm-2">视频名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[f_name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">是否推荐:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[f_hot]', ['1'=>'不推荐', '2'=>'推荐'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[f_type]', ['film'=>'电影', 'tv_play'=>'视频'])}
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="c-title" class="control-label col-xs-12 col-sm-2">播放平台:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" data-source="{:url('/admin/film/platform/selectpage')}" class="form-control selectpage" name="row[p_type]" type="text" value="">
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <label for="c-f_flag" class="control-label col-xs-12 col-sm-2">视频标签:</label>
+        <div class="col-xs-12 col-sm-8"> 
+            <input id="c-f_flag" data-rule="required" class="form-control" name="row[f_flag]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-image" class="control-label col-xs-12 col-sm-2">视频封面图:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image" data-rule="" class="form-control" size="50" name="row[f_img]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-image" class="btn btn-danger plupload" data-input-id="c-image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-image" data-url="{:url('ajax/upload')}"><i class="fa fa-upload"></i> 上传</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> 选择</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div id="extend"></div>
+    <div class="form-group">
+        <label for="c-director" class="control-label col-xs-12 col-sm-2">导演:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-director" class="form-control" name="row[f_director]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-performer" class="control-label col-xs-12 col-sm-2">演员:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-performer"  class="form-control" name="row[f_performer]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-value" class="control-label col-xs-12 col-sm-2">视频介绍:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-value" class="form-control " rows="10" name="row[f_desc]"></textarea>
+        </div>
+    </div>
+    <div class="form-group hide layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+<script src="http://cdn.demo.fastadmin.net/assets/js/require.js" data-main="http://cdn.demo.fastadmin.net/assets/js/require-backend.min.js?v=1.0.1"></script>
+

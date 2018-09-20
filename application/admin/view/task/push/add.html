@@ -1,0 +1,52 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="c-title" class="control-label col-xs-12 col-sm-2">标题:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-content" class="control-label col-xs-12 col-sm-2">描述:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-content" data-rule="required" class="form-control" name="row[content]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-images" class="control-label col-xs-12 col-sm-2">图片地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-images" data-rule="required" class="form-control" name="row[images]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-jump_url" class="control-label col-xs-12 col-sm-2">跳转地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-jump_url" data-rule="required" class="form-control" name="row[jump_url]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">展示类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[show_type]', ['1'=>'个人中心轮播', '2'=>'收徒顶部轮播','3'=>"收徒底部轮播","4"=>"app活动推送"])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">是否禁用:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[status]', ['1'=>'正常', '2'=>'禁用'])}
+        </div>
+    </div>
+
+    
+   
+    <div class="form-group hide layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+<script src="http://cdn.demo.fastadmin.net/assets/js/require.js" data-main="http://cdn.demo.fastadmin.net/assets/js/require-backend.min.js?v=1.0.1"></script>
+
+

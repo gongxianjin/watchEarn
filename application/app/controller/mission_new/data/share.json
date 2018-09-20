@@ -1,0 +1,46 @@
+{
+
+	"wechat_friend":{
+		"title":"看视频，赚零花，微信提现秒到账，快来和我一起赚零花吧！"
+		,"content":"【淘视界】新用户专享1元现金，秒提现，填写我的邀请码%s，首邀2个好友立获23元现金奖励哦~"
+		,"imgUrl":"share_img_host/img/new_taologo.png"
+		,"url":""
+		,"imgArray":[]
+	},
+	"wechat_circle":{
+		"title":"观看视频领红包，微信提现秒到账，新人福利乐翻天，大家一起赚多多!"
+		,"content":"【淘视界】不仅能看喜欢的视频，还能一元提现哦,抓住机会啦。这是我的邀请码%s, 猛戳这里URL%s"
+		,"imgUrl":"share_img_host/img/new_taologo.png"
+		,"url":""
+		,"imgArray":[
+                "share_img_host/qr/shareFrient4.jpg"
+		]
+	},
+	"face_invite":{
+		"title":"观看视频领红包，新人福利乐翻天，微信提现秒到账,大家一起赚多多!"
+		,"content":"【淘视界】即能看喜欢的视频，还能一元提现哦~！抓住机会啦,这是我的邀请码%s,猛戳这里URL%s"
+		,"imgUrl":"share_img_host/img/new_taologo.png"
+		,"url":""
+	},
+	"qq_friend":{
+		"title":"观看视频领红包，新人福利乐翻天！"
+		,"content":"【淘视界】观看视频领红包，新人福利乐翻天，微信提现秒到账，大家一起赚多多，填写我的邀请码%s"
+		,"imgUrl":"share_img_host/img/new_taologo.png"
+		,"url":""
+	},
+	"short_message_invite":{
+		"title":"观看视频领红包，新人福利乐翻天！"
+		,"content":"【淘视界】看视频还能赚钱？ 赶快扫-码加入，即能看喜欢的视频，还能一元提现哦！抓住机会啦,这是我的邀请码%s"
+		,"imgUrl":"share_img_host/img/new_taologo.png"
+		,"url":""
+
+	},
+	"default":{
+		"title":"Earn $ by watching rewarded videos"
+	,"content":"Earn $ by watching rewarded videos ! Earn 5$-50$ a day !\nMin 5 $ withdraw in Paypal !"
+	,"imgUrl":"share_img_host/img/new_taologo.png"
+	,"url":""
+	,"imgArray":[]
+	}
+
+}

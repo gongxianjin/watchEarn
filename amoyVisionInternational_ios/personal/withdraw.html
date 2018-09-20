@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>Withdraw</title>
+	<link rel="stylesheet" href="../css/cssRest.css" />
+	<link rel="stylesheet" href="../css/withdrawal.css?t=060901" />
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="../js/html5shiv.min.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<![endif]-->
+	<style type="text/css">
+		.nosure {
+			display: block;
+			background: rgb(158, 154, 154);
+			padding: .28rem 2rem;
+			margin: 1rem 1rem 0;
+			color: #FFFFFF;
+			font-size: .36rem;
+			font-weight: bold;
+			border-radius: .1rem;
+		}
+	</style>
+</head>
+<body>
+<div id="app" v-cloak>
+	<p class="total"><em v-text="balance"></em><span>$</span></p>
+	<p class="warmNotice"><img src="../images/smile.png"/><span>Tips : Withdraw amount no less than {{min_draw}}$</span></p>
+	<p class="money">Amount  $</p>
+	<div class="write">
+		<em>$</em>
+		<input type="number" name="amount" placeholder="0.00"/>
+	</div>
+	<a href="javascript:void(0)"  @click="play" class="sure" v-if="balance>=min_draw">ok</a>
+	<a href="javascript:void(0)"  @click="less" class="nosure" v-else>ok</a>
+	<!--无法提现弹层-->
+	<div class="unabledChange" v-show="isShowUnabled" @click="hide()">
+		<div class="unabledCon">
+			<h6>Failed  ! </h6>
+			<p> Withdraw amount no less than {{min_draw}}$</p>
+			<div class="invitation">
+				<a href="javascript:void(0)" @click="watch()">Watch& Earn</a>
+				<a href="../makeMoney/share.html"> Invite & Earn</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/common.js?t=1"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el:'#app',
+        data:function(){
+            return{
+                balance:'',
+                isShowUnabled:false,
+                amount:0,
+                min_draw:'',
+                max_draw:''
+            }
+        },
+        created: function() {
+            var _this = this;
+            instance.post(global.url+'User/index',pam).then(function(res){
+                this.app.balance = res.data.data.userMsg.balance;
+                _this.min_draw = res.data.data.userMsg.min_draw;
+                _this.max_draw = res.data.data.userMsg.max_draw;
+            });
+        },
+        methods:{
+            play:function(){
+                this.amount = $.trim($("input[name='amount']").val());
+                var er=true;
+                var msg = "";
+                var reg = /^[0-9]+.?[0-9]*$/;
+                if(this.amount== "" || !reg.test(this.amount)){
+                    layer.open({
+                        content:"Re-enter!"
+                        ,skin: 'msg'
+                        ,time: 3 //3秒后自动关闭
+                    });
+                    return false;
+                }
+                if( parseFloat(this.amount) < parseFloat(this.min_draw)  ){
+                    layer.open({
+                        content:"Withdraw amount no less than "+this.min_draw +"$"
+                        ,skin: 'msg'
+                        ,time: 3 //3秒后自动关闭
+                    });
+                    return false;
+                }
+                if(parseFloat(this.amount) >parseFloat(this.balance)){
+                    layer.open({
+                        content:"Withdraw amount no more than balance!"
+                        ,skin: 'msg'
+                        ,time: 3 //3秒后自动关闭
+                    });
+                    return false;
+                }
+                if(parseFloat(this.amount) >parseFloat(this.max_draw)){
+                    layer.open({
+                        content:"Max withdraw :"+this.max_draw+"$!"
+                        ,skin: 'msg'
+                        ,time: 3 //3秒后自动关闭
+                    });
+                    return false;
+                }
+                    //判断金额
+                    pam +='&amount='+this.amount;//传参
+                    this.Withdrawals(pam);
+
+            },
+            less:function(){
+                var self = this;
+                self.isShowUnabled = true;
+            },
+            //观看赚钱跳转安卓
+            watch:function(){
+                window.WebViewJavascriptBridge.callHandler('toMainPage',"", function(responseData) {});
+            },
+            hide:function(){
+                var _this = this;
+                _this.isShowUnabled = false;
+            },
+            Withdrawals:function(data){
+                var loading= layer.open({
+                    type: 2
+                    ,content: 'loading'
+                    ,shadeClose: false
+                });
+                instance.post(global.url+'Cash/applyPay', data).then(function(res){
+                    layer.close(loading);
+                    layer.open({
+                        content:res.data.msg
+                        ,skin: 'msg'
+                        ,time: 3 //3秒后自动关闭
+                    });
+                    if(res.data.code == 200){
+                        setTimeout(function(){
+                            window.location.href="incomeDetails.html?type=3";
+                        },3000)
+                    }
+                })
+            }
+        }
+    })
+
+
+</script>
+</html>

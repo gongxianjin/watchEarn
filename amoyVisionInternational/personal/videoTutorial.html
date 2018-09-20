@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+		 <title>New user video tutorial</title>
+		 <script type="text/javascript" src="../js/vue.min.js"></script>
+         <script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+		 <script type="text/javascript" src="../js/ckplayer/ckplayer.js" charset="UTF-8"></script>
+		 <script type="text/javascript" src="../js/jquery.min.js" ></script>
+		 <script type="text/javascript" src="../js/Android.js"></script>
+		 <script type="text/javascript" src="../js/default.js"></script>
+         <script type="text/javascript" src="../js/common.js"></script>
+		 <!--<link rel="stylesheet" href="../css/sina_base.css">-->
+		 <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 7.5;
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+		<script type="text/javascript" src="../js/layer/layer.js"></script>
+	</head>
+	<style>
+		.layui-m-layer-msg .layui-m-layercont {
+			padding: 37px 81px;
+		}
+		.layui-m-layercont{font-size:49px;}
+		.load{
+			width:4.5rem;
+		    height:4.5rem;
+			position: absolute;
+			top:50%;
+			transform: translateY(-50%);
+			z-index:9;
+			left: 25%;
+		}
+		.loadBox{
+			width:100%;
+			height:100%;
+			background: #ffffff;
+			position: fixed;
+			top:0;
+			left:0;
+			z-index: 10;
+		}
+	</style>
+	<body>
+	<div class="loadBox">
+		<img src="../images/loading.gif" class="load"/>
+	</div>
+		<div id="video" style="width:80%;margin-left:10%;height: 50%;"></div>
+	<script type="text/javascript">
+
+		 var dataParam= GetBaseMsg();
+	var pay_time = 0;
+	var videoObject = {
+		container: '#video',//“#”代表容器的ID，“.”或“”代表容器的class
+		variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+		//flashplayer:true,//如果强制使用flashplayer则设置成true
+		poster: '../images/newVideo.jpg', //封面图片
+		video: [
+	        ['../MP4/news.mp4', 'video/mp4', '', 0],
+	    ],//视频地址
+	    loaded: 'loadedHandler',
+	};
+	var player=new ckplayer(videoObject);
+	function loadedHandler() { //播放器加载后会调用该函数
+        $(".loadBox").hide();
+	//	player.addListener('time', timeHandler); //监听播放时间,addListener是监听函数，需要传递二个参数，'time'是监听属性，这里是监听时间，timeHandler是监听接受的函数
+		player.addListener('play', playHandler); //监听播放状态
+
+	}
+	function timeHandler(t) { //监听播放时间
+	}
+	var isPlay = true;
+
+	function playHandler(){
+	    if(isPlay){
+		var timer = setInterval(function () {
+                    pay_time++;
+                    //完成任务
+                    if (pay_time >=30) {
+                        clearInterval(timer);
+                        instance.post(global.url + 'mission_new/handler?id=13',pam)
+							.then(function(res){
+							    var data = res.data;
+                                isPlay = false;
+							})
+                    }
+                }, 1000);
+        }
+	}
+</script>
+	</body>
+
+</html>

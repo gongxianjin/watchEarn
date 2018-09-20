@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/sina_base.css">
+    <link rel="stylesheet" href="../css/first_invite2.css?t=0413.01">
+    <title>Special Tasks</title>
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+</head>
+<body>
+<div id="container" v-cloak>
+    <img src="../images/apprentices_01.png"/>
+    <img src="../images/apprentices_02.jpg"/>
+    <div class="h140"></div>
+    <div class="footerFixed">
+        <ul>
+            <li @click="weiChat()">
+                <img src="../images/in.png"/>
+                <span>LinkedIn</span>
+            </li>
+            <li @click="ciecleFriends()">
+                <img src="../images/facebook.png"/>
+                <span>Facebook</span>
+            </li>
+            <li @click="qqShare()">
+                <img src="../images/shareQQ.png"/>
+                <span>Twitter</span>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script src="../js/common.js"></script>
+<script>
+    var app = new Vue({
+        el:"#container",
+        data:function(){
+            return{
+                shareObg:{},
+                code:'',
+            }
+        },
+        created:function(){
+            var _this = this;
+            _this.code = _this.getUrlParam("code");
+            _this.info();
+        },
+        methods:{
+            info:function(){
+                var _this = this;
+                pam +='&key_code='+_this.code ;//传参
+                instance.post(global.url + 'Activateshare/share', pam).then(function (res) {
+                    if(res.data.code==200){
+                        _this.shareObg = res.data.data;
+                    }
+                });
+            },
+            // 获取浏览器参数
+            getUrlParam:function(name){
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            //linkedIn
+            weiChat:function(){
+                var _this = this;
+                var data = {type:3,title:share_data.default.title,content:share_data.default.content,
+                    url:share_data.default.url,imgUrl:share_data.default.imgUrl,wechatShareType:4};
+                window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {});
+            },
+            //facebook
+            ciecleFriends:function(){
+                var _this = this;
+                var data = {
+                    type:0,
+                    title:_this.shareObg.default.title,
+                    content:_this.shareObg.default.content,
+                    url:_this.shareObg.default.url,
+                    imgUrl:_this.shareObg.default.imgUrl,
+                    wechatShareType:4,
+                    activity_type:_this.code
+                };
+                window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {});
+            },
+            //Twitter
+            qqShare:function(){
+                var _this = this;
+                var data = {
+                    type:1,
+                    title:_this.shareObg.default.title,
+                    content:_this.shareObg.default.content,
+                    url:_this.shareObg.default.url,
+                    imgUrl:_this.shareObg.default.imgUrl,
+                    imgArray:_this.shareObg.default.imgArray,
+                    wechatShareType:4,
+                    activity_type:_this.code
+                };
+                window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {});
+            }
+        }
+    });
+</script>
+</html>

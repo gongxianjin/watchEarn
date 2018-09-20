@@ -1,0 +1,13 @@
+<update>
+    <version_code>105</version_code>
+    <version_name>1.0.5</version_name>
+    <apk_size>14MB</apk_size>
+    <apk_name>Watch And Earn</apk_name>
+    <apk_url>http://android.news.88acca.com/package/juNews.apk</apk_url>
+    <google_play_href>https://play.google.com/store/apps/details?id=com.sven.huinews.international</google_play_href>
+    <must_update>1</must_update>
+    <version_msg>
+      <!--1:优化界面显示。-->
+      <!--2:修改已知BUG。-->
+  </version_msg>
+</update>

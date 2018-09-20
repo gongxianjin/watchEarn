@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Billboard</title>
+    <meta name="keywords" content="your keywords">
+    <meta name="description" content="your description">
+    <meta name="author" content="author,email address">
+    <!-- 为移动设备添加 viewport -->
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <!-- iOS 图标 -->
+    <link rel="apple-touch-icon-precomposed" href="../images/juxinwen.ico">
+    <link rel="shortcut icon" href="../images/juxinwen.ico">
+    <link rel="stylesheet" href="../css/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="../css/billboard.css?a=1.153">
+</head>
+<body>
+
+<div class="content">
+    <div class="back-img">
+        <img src="../images/bill-top-back.png" style="width: 100%;" alt="">
+    </div>
+    <div class="top-1">
+        <div class="top-fist">
+            <img src="../images/bill-top.png" style="width: 100%;" alt="">
+        </div>
+        <div class="top-head-div">
+            <div class="top-head">
+                <img src="https://tg.199ho.com//static/img/default_head.png" style="width: 100%;" alt="">
+            </div>
+            <div class="top-country">
+                <img src="../images/country/global.png" style="width: 100%;" alt="">
+            </div>
+        </div>
+
+        <div class="top-name">
+            ----
+        </div>
+        <div class="top-back">
+            <img src="../images/top-1-back.png" style="width: 100%" alt="">
+        </div>
+        <div class="top-money">
+            $---
+        </div>
+    </div>
+
+    <div class="top-2">
+        <div class="top-head-div">
+            <div class="top-head">
+                <img src="https://tg.199ho.com//static/img/default_head.png" style="width: 100%;" alt="">
+            </div>
+
+            <div class="top-country">
+                <img src="../images/country/global.png" style="width: 100%;" alt="">
+            </div>
+        </div>
+
+        <div class="top-name">
+            ----
+        </div>
+        <div class="top-back">
+            <img src="../images/top-2-back.png" style="width: 100%" alt="">
+        </div>
+        <div class="top-money" style="top:2.8rem;">
+            $---
+        </div>
+    </div>
+
+    <div class="top-3">
+        <div class="top-head-div">
+            <div class="top-head">
+                <img src="https://tg.199ho.com//static/img/default_head.png" style="width: 100%;" alt="">
+            </div>
+
+            <div class="top-country">
+                <img src="../images/country/global.png" style="width: 100%;" alt="">
+            </div>
+        </div>
+
+        <div class="top-name">
+            ----
+        </div>
+        <div class="top-back">
+            <img src="../images/top-3-back.png" style="width: 100%" alt="">
+        </div>
+        <div class="top-money" style="top:2.8rem;">
+            $---
+        </div>
+    </div>
+
+    <div class="middle">
+        <img src="../images/top-middle-back.png" style="width: 100%;" alt="">
+
+        <ul class="lists">
+
+        </ul>
+    </div>
+
+    <div class="footer-btn" onclick="earn()">
+        Earn
+    </div>
+
+</div>
+
+<script type="text/html" id="template-list">
+    <li>
+        <div class="top-list-num">
+        4
+        </div>
+        <div class="top-list-head">
+        <img src="https://tg.199ho.com//static/img/default_head.png" style="width: 100%;" alt="">
+        </div>
+        <div class="top-list-name">
+            ----
+        </div>
+        <div class="top-list-country">
+            <img src="../images/country/global.png" style="width: 100%;" alt="">
+        </div>
+        <div class="top-list-money">
+        $--
+        </div>
+        </li>
+</script>
+
+
+</body>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/common.js?t=1"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+<script type="text/javascript" src="../js/billboard.js?0.12538"></script>
+</html>

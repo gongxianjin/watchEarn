@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>Invite friends</title>
+	<link rel="stylesheet" href="../css/cssRest.css" />
+	<link rel="stylesheet" href="../js/swiper/swiper-3.4.1.min.css" />
+	<link rel="stylesheet" href="../css/share.css" />
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="../js/html5shiv.min.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div id="app">
+	<a href="javascript:adShow()" style="display: inline-block;width:100%;">
+		<img src="../images/shareImg.png" class="adver"/>
+	</a>
+	<p class="myCode" v-cloak>My invitation code：<span v-cloak>{{code}}</span></p>
+	<p class="methods"><span></span><label> Share  to invite friends </label><span></span></p>
+	<div class="box">
+		<div class="qun">
+			<img src="../images/master_wechat.png" class="share-to-wechat" data-type="facebook" @click="facebook()"/>
+			<img src="../images/master_two_code.png" class="sweep" data-type="twitter" @click="twitter()"/>
+			<img src="../images/master_sms.png" class="share-to-sms" data-type="linkedIn" @click="linkedIn()"/>
+			<img src="../images/copyLink.png" class="btn" @click="copy" data-clipboard-action="copy" data-clipboard-target="#foo"/>
+			<input  id="foo"  type="text" readonly="readonly" value="https://play.google.com/store/apps/details?id=com.sven.huinews.international">
+		</div>
+	</div>
+	<p class="methods"><span></span><label>The bonus of invite </label><span></span></p>
+	<div class="desc">
+		<p>Your income will rise sharply when your friends are also earning and the offer is as follow.</p>
+		<span>1. 6000coins for the first invitation</span>
+		<span>2. 2~21 times earnings of your friend</span>
+		<span>3. 1000coins from your friend's friend</span>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script src="../js/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+<script type="text/javascript">
+	function adShow() {
+        personal.openGoogleAd("{adPageType:5}");
+    }
+    var dataParam = GetBaseMsg();
+    $(function(){
+        var app = new Vue({
+            el:'#app',
+            data:function(){
+                return{
+                    code:'',
+                    share_data:''
+                }
+            },
+            created:function(){
+                var _this = this;
+                instance.post(global.url+'User/index',pam)
+                    .then(function(res){
+                        if(res.data.code==200){
+                            _this.code = res.data.data.userMsg.invitation_code;
+                        }
+                    })
+                _this.shareData();
+            },
+            methods:{
+                //获取分享数据
+                shareData:function(){
+                    var _this = this;
+                    //活动或任务的key_code
+                    var key_code = getUrlParam("code");
+                    //获取分享信息
+                    dataParam.key_code = key_code;
+                    $.post(global.url+'Activateshare/share',dataParam,function(res){
+                        if(res.code == 200){
+                            _this.share_data = res.data;
+                        }
+                    })
+                },
+                //分享Facebook
+                facebook:function(){
+                    var _this = this;
+                    var data = {type:0,title:_this.share_data.default.title,content:_this.share_data.default.content,
+                        url:_this.share_data.default.url+"&to_platfrom=facebook",imgUrl:_this.share_data.default.imgUrl,wechatShareType:4};
+                    window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {
+                        var  responseData =  JSON.parse(responseData);
+                        if(responseData.code==200){
+                            _this.success();
+                        }
+                    });
+                },
+                //分享到Twitter
+                twitter:function(){
+                    var _this = this;
+                    var data = {type:1,title:_this.share_data.default.title,content:_this.share_data.default.content,
+                        url:_this.share_data.default.url+"&to_platfrom=twitter",imgUrl:_this.share_data.default.imgUrl,wechatShareType:4};
+                    window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {
+                        var  responseData =  JSON.parse(responseData);
+                        if(responseData.code==200){
+                            _this.success();
+                        }
+                    });
+                },
+                //分享到领英
+                linkedIn:function(){
+                    var _this = this;
+                    var data = {type:3,title:_this.share_data.default.title,content:_this.share_data.default.content,
+                        url:_this.share_data.default.url+"&to_platfrom=linkin",imgUrl:_this.share_data.default.imgUrl,wechatShareType:4};
+                    window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {
+                        var  responseData =  JSON.parse(responseData);
+                        if(responseData.code==200){
+                            _this.success();
+                        }
+                    });
+                },
+                //分享成功之后的回调
+                success:function(){
+                    $.post(global.url+"mission_new/handler?id=8",dataParam,function(res){
+                        if(res.code == 200 &&res.data.is_add_gold > 0){
+                            //调用金币动画效果
+                            personal.goldWelcome('{"count":'+res.data.gold+'}');
+                        }
+                    })
+                },
+                //复制链接
+                copy:function(){
+                    var _this = this;
+                    var clipboard = new Clipboard('.btn');
+                    clipboard.on('success', function (e) {
+                        layer.open({
+                            content: 'Copied'
+                            ,skin: 'msg'
+                            ,time: 2 //2秒后自动关闭
+                        });
+                    });
+                },
+            }
+        });
+    })
+
+</script>
+</html>

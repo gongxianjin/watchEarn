@@ -1,0 +1,185 @@
+body #container {
+  height: auto;
+  overflow: hidden; }
+  body #container .content {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 0 .1rem;
+    box-sizing: border-box; }
+    body #container .content .item {
+      margin-top: .15rem; }
+      body #container .content .item .title {
+        display: -webkit-box;
+        /* OLD - iOS 6-, Safari 3.1-6 */
+        /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox;
+        /* TWEENER - IE 10 */
+        display: -webkit-flex;
+        /* NEW - Chrome */
+        display: flex;
+        height: .22rem;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-family: PingFangSC-Medium;
+        font-size: .16rem;
+        color: #333333;
+        letter-spacing: 0;
+        margin-bottom: .08rem; }
+        body #container .content .item .title i {
+          width: .12rem;
+          height: .12rem;
+          border-radius: 50%;
+          background: #ff5645;
+          margin-right: .15rem; }
+      body #container .content .item .item-content {
+        width: 3.27rem;
+        padding-left: .28rem;
+        color: #666666;
+        letter-spacing: 0;
+        line-height: .21rem;
+        font-size: .14rem; }
+  body #container .problem-list {
+    display: none;
+    padding: 0 .1rem;
+    box-sizing: border-box; }
+    body #container .problem-list .item {
+      margin: .15rem 0 .2rem 0; }
+      body #container .problem-list .item h3 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        font-size: .16rem;
+        font-family: PingFangSC-Semibold;
+        letter-spacing: 0;
+        margin-bottom: .15rem; }
+        body #container .problem-list .item h3 i {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          width: .2rem;
+          height: .2rem;
+          border-radius: 50%;
+          background: #ff5645;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          color: #FFFFFF;
+          font-style: normal;
+          margin-right: .15rem; }
+        body #container .problem-list .item h3 p {
+          color: #333333; }
+      body #container .problem-list .item .answer {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        font-family: PingFangSC-Regular;
+        font-size: .14rem;
+        color: #666666;
+        letter-spacing: 0;
+        line-height: .21rem;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        padding-left: .15rem; }
+        body #container .problem-list .item .answer input {
+          margin: 0 .1rem 0 .2rem; }
+    body #container .problem-list .error-tips {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      font-size: .16rem;
+      color: #FF5645; }
+      .error-tips img{
+      	width:.32rem;
+      	height:.32rem;
+      }
+  body #container .btn {
+    display: block;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 3.43rem;
+    height: .48rem;
+    background: #ff5646;
+    border-radius: 1rem;
+    text-align: center;
+    line-height: .48rem;
+    font-family: PingFangSC-Regular;
+    font-size: .16rem;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    margin-bottom: .15rem;
+    margin-top: .4rem; }
+  body #container .model {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7); }
+    body #container .model .dialog {
+      width: 2.9rem;
+      height: auto;
+      overflow: hidden;
+      font-size: .16rem;
+      background: #fff;
+      border-radius: .08rem; }
+      body #container .model .dialog .dialog-content {
+        height: .72rem;
+        border-bottom: 1px solid #DCDCDC;
+        color: #333333;
+        text-align: center;
+        line-height: .72rem; }
+      body #container .model .dialog .dialog-btn {
+        height: .45rem;
+        color: #FF5645;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: .45rem; }
+    body #container .model.hide {
+      display: none; }
+
+[v-cloak] {
+  display: none; }

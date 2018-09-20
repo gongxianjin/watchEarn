@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Novice Bonus</title>
+    <link rel="shortcut icon" href="../images/juxinwen.ico">
+    <link rel="stylesheet" href="../css/sina_base.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/1yuan_withdraw.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+            docEl.style.fontSize = oSize + "px";
+        }
+        window.addEventListener("resize", Rem, false);
+        Rem();
+    </script>
+</head>
+<body>
+    <div id="container" v-cloak>
+        <div class="banner">
+            <p>Novice Bonus </p>
+            <img src="../images/icon_wra.png"/>
+        </div>
+        <ul class="task-list">
+             <li id="share">
+                 <p><span>1、Share to friends ({{share_friend_prentice.number}}/{{share_friend_prentice.total}})</span></p>
+                 <a v-if="share_friend_prentice.finished" href="javascript:void(0)" class="done">Done</a>
+                 <a v-else href="../makeMoney/share.html">Go</a>
+             </li>
+             <li id="read">
+                 <p><span>2、Watch "$" marked videos ({{usual_read.number}}/{{usual_read.total}})</span></p>
+                 <a v-if="usual_read.finished" href="javascript:void(0)" class="done">Done</a>
+                 <a v-else class="gotoRead" @click="watchVideo">Go</a>
+             </li>
+        </ul>
+        <div class="progress">
+            <p v-if="finished==total_task">Done ! Withdraw</p>
+            <p v-else> <span>{{total_task-finished}}</span> steps to go</p>
+            <span><i :style="{ width: finishedwidth + 'rem' }"></i></span>
+        </div>
+       <!-- <ul class="tips_list">
+            <li>Notice :</li>
+            <li>1、Please finish the tasks to withdraw </li>
+            <li>2、Only sign up within 14 days can enjoy this Min-withdraw right </li>
+        </ul>-->
+        <div class="footer">
+            <a v-if="finished==total_task" href="javascript:void(0)"  class=" success clickWithdraw" @click="withdraw" > Earn more  </a>
+            <a v-else href="javascript:void(0)"  class="clickWithdraw" @click="noFinish"> Earn more  </a>
+        </div>
+
+       <!-- <p :class="showMessage ? 'message active' : 'message'" v-show="showMessage" v-html="showMessageTips" v-cloak></p>-->
+    </div>
+    <script src="../js/vue.min.js"></script>
+   <script type="text/javascript" src="../js/libs/axios.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js" ></script>
+     <script type="text/javascript" src="../js/Android.js"></script>
+    <script type="text/javascript" src="../js/layer/layer.js"></script>
+
+</body>
+<script type="text/javascript">
+    var app = new Vue({
+        el:'#container',
+        data:function(){
+            return{
+                task_login:{},//签到情况
+                share_friend_prentice:{},//分享
+                bind_wechat:'',//绑定微信
+                usual_read:'',//观看视频
+                finished:'',
+                total_task:'',
+                finishedwidth:'',
+            }
+        },
+        created:function(){
+            var _this = this;
+            _this.cashOneRedTisk();
+        },
+        methods:{
+            cashOneRedTisk:function(){
+                var _this = this;+
+                instance.post(global.url + 'Redbag/cashOneRedTisk', pam)
+                    .then(function(res){
+                        var data = res.data;
+                        if(data.code==200){
+                             _this.task_login = data.data.task.task_login;
+                             _this.share_friend_prentice = data.data.task.share_friend_prentice;
+                             _this.bind_wechat = data.data.task.bind_wechat;
+                             _this.usual_read = data.data.task.usual_read;
+                             _this.finished = data.data.finished;
+                             _this.total_task = data.data.total_task;
+                             _this.finishedwidth = (1-(data.data.total_task - data.data.finished)/_this.total_task)*3;
+                        }
+                });
+            },
+            //观看视频
+            watchVideo:function(){
+                window.WebViewJavascriptBridge.callHandler('toMainPage',"", function(responseData) {});
+            },
+            //没有完成任务点击提示
+            noFinish:function(){
+                layer.open({
+                    content:"Please finish the tasks first"
+                    ,skin: 'msg'
+                    ,time: 2 //2秒后自动关闭
+                });
+            },
+            //完成任务提现
+            withdraw:function(){
+                var _this = this;
+                window.location.href = "task_hall.html"
+            }
+        }
+    });
+</script>
+</html>

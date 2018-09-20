@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>Daily Earning Tasks</title>
+	<link rel="stylesheet" href="../css/cssRest.css" />
+	<link rel="stylesheet" href="../js/swiper/swiper-3.4.1.min.css" />
+	<link rel="stylesheet" href="../css/task.css?t=0601.01" />
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/loading.css">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="../js/html5shiv.min.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<![endif]-->
+	<style type="text/css">
+		.task-item-detail{
+			display:none;
+		}
+	</style>
+</head>
+<script>
+    function Rem() {
+        var docEl = document.documentElement,
+            oSize = docEl.clientWidth / 3.75;
+        docEl.style.fontSize = oSize + "px";
+    }
+    window.addEventListener("resize", Rem, false);
+    Rem();
+</script>
+<body>
+<div id="app" v-cloak>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" v-for="(item,index) in pushList">Congratulations !
+				<span class="font-yellow">{{item.nickname}}</span>
+				has successfully invited
+				<span class="font-yellow" v-if="item.num==1">{{item.num}}friend</span>
+				<span class="font-yellow" v-else>{{item.num}}friends</span>
+				 just now !
+			</div>
+		</div>
+	</div>
+	<div id="background">
+		<a class="ftext left-radius" href="incomeDetails.html?type=1">Coins ：<span v-text="total_gold"></span></a>
+		<div class="ftext right-radius"><a href="howToEarn.html" style="color:#FFFFFF;">How to earn $ ?</a></div>
+		<!--今天是否签到0未签到1,签到-->
+		<div v-if ="islogin==1" id="sign_button" class="isSign">
+			<span class="signed" >Next day<br>{{dayGold}}Coins</span>
+		</div>
+		<div v-else id="sign_button" @click="openSignModel">
+			<span class="" >Check-in </span>
+		</div>
+		<div id="icons">
+			<template v-for="(item,key,index) in day7">
+				<!--已经领取-->
+				<div  class="icon got"  v-if="item.status==1">
+					<div  class="success"><span style="width:100%"><i style="display: block;"></i>+{{item.gold_tribute}}</span></div>
+					<span>got</span>
+				</div>
+				<!--待领取-->
+				<div  class="icon" v-else-if="item.status==2">
+					<div  class="active">
+						<span>{{item.gold_tribute}}</span>
+						<img src="../images/task_hall_4.png" alt="">
+					</div>
+					<span>get</span>
+				</div>
+				<!--待领取多个-->
+				<div  class="icon" v-else>
+					<div  class="">
+						<span>{{item.gold_tribute}}</span>
+						<img src="../images/task_hall_4.png" alt="">
+					</div>
+					<span>{{ item.day }}<i class="day">{{ num2date(item.day) }}</i></span>
+				</div>
+			</template>
+		</div>
+	</div>
+
+	<div id="open_box">
+		<!--未开启-->
+		<div class="box_img"  v-if="isOpenBox==0" @click="open">
+			<img src="../images/task_hall_6.png">
+			<p  class="openy copyAlipay"> Treasure box</p>
+		</div>
+		<!--已经开启-->
+		<div class="box_img active"  v-else>
+			<img src="../images/task_hall_6.png">
+			<p  class="copyAlipay openn "> Next <span id="countDown1">{{content}}</span>
+				<br><img src="../images/task_hall_21.png"></p>
+		</div>
+		<div>
+			<p> Try to open the Treasure Box every four hours ! </p>
+			<p id="open-box-tips"> more friends , more  coins </p>
+		</div>
+	</div>
+
+	<div>
+
+	</div>
+
+	<div id="content" v-if="newList.length>0">
+		<div class="task">
+			<div id="newTask">
+				<div class="task-title">
+					<img src="../images/task_hall_7.png">
+					<p class="font-red">  Novice Task</p>
+				</div>
+				<div class="task-detail" v-for="(item,index) in newList">
+					<div class="task-new-list task-detail-list">
+						<div class="task-item-title">
+							<div>
+								<i></i>
+								<span class="title" v-text="item.title"></span>
+								<b class="task-title-border"></b>
+							</div>
+							<!--title_gold_type标题后图标类型 1 金币图标 2红包图标-->
+							<div class="slideT">
+								<span class="font-orange number" v-text="'+'+item.title_gold"></span>
+								<!--<span v-else class="font-red number" v-text="'+'+item.title_gold"></span>-->
+								<img src="../images/task_hall_9.png" class="task-list-icon">
+								<!--<img src="../images/task_hall_11.png" class="task-list-icon" v-else>-->
+								<img src="../images/task_hall_8.png" class="slide">
+							</div>
+						</div>
+						<div class="task-item-detail">
+							<div>
+								<i></i>
+								<span v-text="item.content"></span>
+								<a :href="item.button_url+'?code='+item.key_code" class="a-go-to-html" v-if="item.button_type==1" :button_type="item.button_type":data-src="item.button_url+'?code='+item.key_code" :data="item.button_type" :is_login="item.is_login" v-text="item.button" :key_code="item.key_code"></a>
+								<a @click="newgoApp($event)" class="a-go-to-html app twitter" v-else :button_type="item.button_type":data-src="item.button_url" :data="item.button_type" :is_login="item.is_login" v-text="item.button" :key_code="item.key_code"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 打开宝箱弹层-->
+	<div id="box-popup" class="popup" style="display: none;" @click="closeBox">
+		<div class="information" @click.stop>
+			<div class="information-title">
+				Congratulation!
+			</div>
+			<span class="font-orange  chest-box" style="font-size: .16rem;text-align: center;width: 100%;display: inline-block;font-weight: bold; margin: .1rem 0;">+{{boxGold}}Coins</span>
+			<!--<p class="box-popup-tips">More friends,More coins</p>-->
+			<div class="information-img"><img src="../images/task_hall_18.png"></div>
+			<a href="javascript:void(0)" class="shareMoment" @click="share_moment">Share to Twitter  to earn 10 more</a>
+			<!--<a href="javascript:void(0)" class="sure" @click="closeBox">OK</a>-->
+		</div>
+	</div>
+	<!--注册弹层-->
+	<div class="registered">
+		<div class="regCon" >
+			<img src="../images/login.png" onclick="gotoAPPLogin()" />
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+<script type="text/javascript" src="../js/task.js?t=18060703"></script>
+</html>

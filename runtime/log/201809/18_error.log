@@ -1,0 +1,212 @@
+---------------------------------------------------------------
+[ 2018-09-18T02:26:32-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=fsadfd
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0,10' at line 1[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Connection.php:388]
+---------------------------------------------------------------
+[ 2018-09-18T03:42:10-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=fsadfd&du_type=2
+[ error ] [8]未定义数组索引: order[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:73]
+---------------------------------------------------------------
+[ 2018-09-18T03:43:17-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=fsadfd&du_type=2
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0,10' at line 1[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Connection.php:388]
+---------------------------------------------------------------
+[ 2018-09-18T04:13:39-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433&du_type=2
+[ error ] [8]Undefined property: app\common\service\VideoComment::$user_id[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:132]
+---------------------------------------------------------------
+[ 2018-09-18T04:14:09-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433&du_type=2
+[ error ] [8]Undefined property: app\common\service\VideoComment::$user_id[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:142]
+---------------------------------------------------------------
+[ 2018-09-18T04:19:26-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433&du_type=2
+[ error ] [8]Undefined property: app\common\service\VideoComment::$user_id[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:142]
+---------------------------------------------------------------
+[ 2018-09-18T04:19:58-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433&du_type=2
+[ error ] [0]致命错误: Call to undefined method think\response\Json::toArray()[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:91]
+---------------------------------------------------------------
+[ 2018-09-18T04:20:10-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433&du_type=2
+[ error ] [0]致命错误: Call to undefined method think\response\Json::toArray()[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:91]
+---------------------------------------------------------------
+[ 2018-09-18T04:32:12-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984
+[ error ] [8]未定义数组索引: du_type[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T04:32:48-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984
+[ error ] [8]未定义数组索引: du_type[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T04:37:18-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [2]call_user_func_array() expects parameter 1 to be a valid callback, class 'think\Collection' does not have a method 'order'[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Paginator.php:398]
+---------------------------------------------------------------
+[ 2018-09-18T04:41:31-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [8]未定义数组索引: id[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:127]
+---------------------------------------------------------------
+[ 2018-09-18T04:42:51-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [0]致命错误: Call to a member function toArray() on array[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:138]
+---------------------------------------------------------------
+[ 2018-09-18T04:43:57-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [0]致命错误: Call to undefined method think\response\Json::toArray()[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:91]
+---------------------------------------------------------------
+[ 2018-09-18T04:47:14-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [0]致命错误: Class 'app\app\controller\CommentUpRecordsModel' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:101]
+---------------------------------------------------------------
+[ 2018-09-18T04:50:40-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [0]语法解析错误: syntax error, unexpected '&&' (T_BOOLEAN_AND)[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:121]
+---------------------------------------------------------------
+[ 2018-09-18T04:50:57-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [0]语法解析错误: syntax error, unexpected '&&' (T_BOOLEAN_AND)[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:118]
+---------------------------------------------------------------
+[ 2018-09-18T04:51:03-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [8]Only variables should be assigned by reference[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:119]
+---------------------------------------------------------------
+[ 2018-09-18T04:52:54-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [8]Undefined property: think\paginator\driver\Bootstrap::$data[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:154]
+---------------------------------------------------------------
+[ 2018-09-18T04:54:02-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [0]类型错误: Too few arguments to function think\Model::data(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Model.php on line 567 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Model.php:299]
+---------------------------------------------------------------
+[ 2018-09-18T04:54:28-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [0]类型错误: Too few arguments to function think\Model::data(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Model.php on line 567 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Model.php:299]
+---------------------------------------------------------------
+[ 2018-09-18T04:54:46-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433?XDEBUG_SESSION_START=16984&du_type=2
+[ error ] [2]Use of undefined constant data - assumed 'data' (this will throw an Error in a future version of PHP)[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:155]
+---------------------------------------------------------------
+[ 2018-09-18T05:02:12-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/push_comment/fdsa
+[ error ] [8]未定义数组索引: du_type[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:50]
+---------------------------------------------------------------
+[ 2018-09-18T05:07:23-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/push_comment/fdsa
+[ error ] [0]数据表字段不存在:[update_time][E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Builder.php:109]
+---------------------------------------------------------------
+[ 2018-09-18T05:12:20-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/push_comment/3364205eaffb46c09c2a91f8ea7ef183
+[ error ] [0]数据表字段不存在:[update_time][E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Builder.php:109]
+---------------------------------------------------------------
+[ 2018-09-18T05:13:31-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/push_comment/3364205eaffb46c09c2a91f8ea7ef183
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:54]
+---------------------------------------------------------------
+[ 2018-09-18T05:17:02-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183
+[ error ] [8]未定义数组索引: du_type[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:71]
+---------------------------------------------------------------
+[ 2018-09-18T19:45:22-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=6550984350555442433&du_type=2
+[ error ] [0]variable type error： array[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Response.php:318]
+---------------------------------------------------------------
+[ 2018-09-18T20:07:38-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:11:22-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:16:42-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:17:42-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:18:08-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:19:34-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:27:04-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [2]call_user_func_array() expects parameter 1 to be a valid callback, class 'think\Collection' does not have a method 'select'[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\Paginator.php:398]
+---------------------------------------------------------------
+[ 2018-09-18T20:28:53-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]类型错误: Too few arguments to function think\db\Query::with(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php on line 39 and exactly 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1895]
+---------------------------------------------------------------
+[ 2018-09-18T20:29:12-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Call to a member function toArray() on array[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:91]
+---------------------------------------------------------------
+[ 2018-09-18T20:31:36-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Call to a member function toArray() on array[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:121]
+---------------------------------------------------------------
+[ 2018-09-18T20:34:09-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]类型错误: Too few arguments to function app\common\logic\VideoCommentLogic::getAllCommentsByCondition(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php on line 106 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T20:34:38-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]类型错误: Too few arguments to function app\common\logic\VideoCommentLogic::getAllCommentsByCondition(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php on line 106 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T20:35:27-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]类型错误: Too few arguments to function app\common\logic\VideoCommentLogic::getAllCommentsByCondition(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php on line 106 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T20:35:34-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]类型错误: Too few arguments to function app\common\logic\VideoCommentLogic::getAllCommentsByCondition(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php on line 106 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T20:35:44-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]类型错误: Too few arguments to function app\common\logic\VideoCommentLogic::getAllCommentsByCondition(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php on line 106 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T20:36:20-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]类型错误: Too few arguments to function app\common\logic\VideoCommentLogic::getAllCommentsByCondition(), 0 passed in E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php on line 106 and at least 1 expected[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php:76]
+---------------------------------------------------------------
+[ 2018-09-18T20:38:04-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:38:21-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:42:24-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [8]Trying to get property 'joinUser' of non-object[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:123]
+---------------------------------------------------------------
+[ 2018-09-18T20:44:28-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [8]Trying to get property 'joinUser' of non-object[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:125]
+---------------------------------------------------------------
+[ 2018-09-18T20:46:23-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [8]Trying to get property 'joinUser' of non-object[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:125]
+---------------------------------------------------------------
+[ 2018-09-18T20:49:23-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:50:04-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [0]致命错误: Class '' not found[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:1909]
+---------------------------------------------------------------
+[ 2018-09-18T20:57:56-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [8]Trying to get property 'joinUser' of non-object[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:112]
+---------------------------------------------------------------
+[ 2018-09-18T20:59:15-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [8]Trying to get property 'joinUser' of non-object[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:112]
+---------------------------------------------------------------
+[ 2018-09-18T21:03:09-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE  `video_id` = ?' at line 1[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Connection.php:388]
+---------------------------------------------------------------
+[ 2018-09-18T21:40:21-07:00 ] 127.0.0.1 127.0.0.1 GET /api/video/list_comment/paginate?id=3364205eaffb46c09c2a91f8ea7ef183&du_type=1
+[ error ] [8]Trying to get property 'joinUser' of non-object[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoComment.php:112]
+---------------------------------------------------------------
+[ 2018-09-18T22:57:50-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [400][E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\validate\BaseValidate.php:23]
+---------------------------------------------------------------
+[ 2018-09-18T22:59:57-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [8]未定义变量: c_id[E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:96]
+---------------------------------------------------------------
+[ 2018-09-18T23:00:54-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [401][E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoCommentUpRecords.php:67]
+---------------------------------------------------------------
+[ 2018-09-18T23:01:12-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:107]
+---------------------------------------------------------------
+[ 2018-09-18T23:01:33-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:107]
+---------------------------------------------------------------
+[ 2018-09-18T23:02:45-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [401][E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoCommentUpRecords.php:68]
+---------------------------------------------------------------
+[ 2018-09-18T23:06:23-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:107]
+---------------------------------------------------------------
+[ 2018-09-18T23:06:56-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [401][E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\service\VideoCommentUpRecords.php:68]
+---------------------------------------------------------------
+[ 2018-09-18T23:07:34-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/1
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:106]
+---------------------------------------------------------------
+
+---------------------------------------------------------------
+[ 2018-09-18T23:16:50-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/592
+[ error ] [0]致命错误: Call to a member function where() on boolean[E:\phpstudy\PHPTutorial\WWW\watchV2\application\common\logic\VideoCommentLogic.php:94]
+---------------------------------------------------------------
+[ 2018-09-18T23:18:59-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/592
+[ error ] [0]method not exist:think\db\Query->save[E:\phpstudy\PHPTutorial\WWW\watchV2\thinkphp\library\think\db\Query.php:94]
+---------------------------------------------------------------
+[ 2018-09-18T23:25:44-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/like_comment/592
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:105]
+---------------------------------------------------------------
+[ 2018-09-18T23:38:38-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/push_comment/3364205eaffb46c09c2a91f8ea7ef183
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:50]
+---------------------------------------------------------------
+[ 2018-09-18T23:43:44-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/push_comment
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:51]
+---------------------------------------------------------------
+[ 2018-09-18T23:46:51-07:00 ] 127.0.0.1 127.0.0.1 POST /api/video/push_comment
+[ error ] [201][E:\phpstudy\PHPTutorial\WWW\watchV2\application\app\controller\VideoComment.php:51]

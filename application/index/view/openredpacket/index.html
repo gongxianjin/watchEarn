@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>download</title>
+    <link rel="stylesheet" href="/css/cssRest.css" />
+</head>
+<style>
+    .download{position: relative;}
+    .download img{width:100%;height:auto;vertical-align: middle;}
+    .download a{
+        display: inline-block;
+        color: #333333;
+        background: none;
+        position: absolute;
+        width: 6rem;
+        height: .8rem;
+        font-size: .46rem;
+        left: 50%;
+        margin-left: -3rem;
+        top: 12.09rem;
+        text-align: center;
+        line-height: .8rem;
+        border-radius: .2rem;
+    }
+    #code{
+        color: #ffffff;
+        font-weight: bold;
+        position: absolute;
+        text-align: center;
+        top: 10.4rem;
+        font-size: .36rem;
+        height: 0.6rem;
+        display: inline-block;
+        width: 2rem;
+        line-height: .6rem;
+        border-radius: .08rem;
+        left: 50%;
+        margin-left: -1rem;
+    }
+    .download span#money{
+        display: inline-block;
+        position: absolute;
+        top: .5rem;
+        right: 1rem;
+        color: #fff;
+        font-size: .44rem;
+        font-weight: bold;
+        font-style:italic;
+        background:url("/img/$.png") no-repeat right center;
+        background-size:.32rem .52rem;
+        padding-right:.36rem;
+    }
+</style>
+<body>
+    <div class="download">
+        <span id="money">5.02</span>
+        <img src="/img/share_bg.png"/>
+        <span id="code">{$invitationCode}</span>
+        <a href="javascript:void(0)"></a>
+    </div>
+    <!--统计-->
+    {include file="public/shareall"}
+
+    {switch name="to_platfrom" }
+    {case value="twitter"}
+    {include file="public/sharetwitter"}
+    {/case}
+    {case value="linkin"}
+    {include file="public/sharelinkin"}
+    {/case}
+    {case value="facebook"}
+    {include file="public/sharefacebook"}
+    {/case}
+    {/switch}
+</body>
+<script type="text/javascript" src="/js/jquery.min.js" ></script>
+<script type="text/javascript" src="/js/default.js"></script>
+<script type="text/javascript" src="/js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript">
+     var a = Math.random()*15+5;
+     $("#money").text(a.toFixed(2));
+
+    $(".download a").click(function(){
+        window.location.href = "https://play.google.com/store/apps/details?id=com.sven.huinews.international";
+    });
+    instance.post(global.url+'Apprentice/apprenticePageData',pam)
+        .then(function(res){
+            if(res.data.code==200){
+                var data = res.data.data;
+                var invitation_code = data.invitation_code;
+                $("#code").text(invitation_code);
+            }
+        })
+
+</script>
+</html>

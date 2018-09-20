@@ -1,0 +1,40 @@
+@charset "utf-8";
+body{
+    background: #ffffff;
+    text-align:  center;
+}
+.orange{
+    color:#FF5645;
+    text-align:  center;
+    font-size: .32rem;
+    padding: .3rem 0;
+}
+.content{
+    margin:0 .3rem;
+    text-align:  left;
+}
+.content h5{
+    color: #333333;
+    font-size: .34rem;
+}
+.content li i{
+    border: 1px solid #ccc;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    width: .3rem;
+    line-height: .3rem;
+    text-align:  center;
+    margin-right: .1rem;
+}
+.content li p{
+    display:  inline-block;
+    margin-top: .3rem;
+    font-size: .26rem;
+}
+.code{
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto;
+}

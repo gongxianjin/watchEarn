@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> My Inviter</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <link rel="apple-touch-icon-precomposed" href="../images/juxinwen.ico">
+    <link rel="stylesheet" href="../css/sina_base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+            docEl.style.fontSize = oSize + 'px';
+        }
+
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/master_index.css">
+</head>
+<body>
+<div id="container" v-cloak>
+    <div v-if="have_master==2" style="text-align:center">
+        <img src="../images/none.png" class="none" style="margin:0 auto"/>
+        <p class="go">Each user have its own code.Enter the code of your inviter to get some coins !</p>
+        <a href="../personal/enterCode.html" class="write">Enter the invitation code</a>
+    </div>
+    <div v-else>
+        <div class="header" >
+            <div class="master-info">
+                <div class="master-info-detail">
+                    <img  :src="headimg" alt="" id="head">
+                    <p>
+                        <span>{{nickname}}</span>
+                        <span>(Invitation Code：<i id="code" v-text="invitation_code"></i>)</span>
+                    </p>
+                </div>
+                <div class="apprentice-detail">
+                    <p class="apprentice-detail-header">
+                        <span>Friends</span>
+                        <span> Expected Income</span>
+                    </p>
+                    <p class="apprentice-detail-content">
+                        <span id="apprenticeTotal" v-text="apprenticeTotal">0</span>
+                        <span><i id="incomeBottom" v-text="min_expected_income">0</i>-<i id="incomeTop" v-text="max_expected_income">0</i>$</span>
+                    </p>
+                </div>
+            </div>
+            <div class="master-tips">
+                <!--  <p></p>
+                  <p> My contribution to my inviter</p>
+                  <p></p>-->
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var  dataParam = GetBaseMsg();
+        var app = new Vue({
+            el:'#container',
+            data:function(){
+                return{
+                    invitation_code:'',//邀请码
+                    apprenticeTotal:'',//徒弟数
+                    min_expected_income:'',//最小预计收入
+                    max_expected_income:'',//最大预计收入
+                    headimg:'',//头像
+                    difference_gold:'',//用户还差多少贡献金币就能获得红包
+                    nickname:'',
+                    have_master:''
+                }
+            },
+            created:function(){
+                //师傅信息接口
+                var _this = this;
+                instance.post(global.url+'Apprentice/masterInfo',pam)
+                    .then(function(res){
+                        if(res.data.code == 200){
+                            var data = res.data.data;
+                            _this.have_master = data.have_master;
+                            _this.invitation_code = data.invitation_code;
+                            _this.apprenticeTotal = data.apprentice_total;
+                            _this.min_expected_income = data.min_expected_income;
+                            _this.max_expected_income = data.max_expected_income;
+                            _this.headimg = data.headimg;
+                            _this.nickname = data.nickname;
+                            _this.difference_gold = data.difference_gold;
+                            $("#distance").text(1000-data.difference_gold);
+                            var width = (1-data.difference_gold/1000)*2.3;
+                            $(".progress_box").html('<i style="width:'+width+'rem"></i>');
+                        }
+                    })
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>处理结果</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+	<script type="text/javascript" src="__STATIC__js/layer/layer.js"></script>
+</head>
+<body >
+	<script type="text/javascript">
+		window.onload=function(){
+			{if condition="$res.code eq -1"}
+				layer.open({
+				    content: "您还不符合领取条件哦!"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{/if}
+			{if condition="$res.code eq -2"}
+				layer.open({
+				    content: "您已经领取过了!"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{/if}
+			{if condition="$res.code eq -3"}
+				layer.open({
+				    content: "请勿重复领取!"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{/if}
+			{if condition="$res.code eq -4"}
+				layer.open({
+				    content: "领取失败！"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{/if}
+			{if condition="$res.code eq -5"}
+				layer.open({
+				    content: "余额不足!"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{/if}
+			{if condition="$res.code eq 1"}
+				layer.open({
+				    content: "领取成功，请留意您的微信通知"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{/if}
+		}
+	</script>
+</body>
+</html>

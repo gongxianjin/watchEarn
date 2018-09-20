@@ -1,0 +1,191 @@
+#container {
+    /* padding-left: .175rem; */
+    /* padding-right: .175rem; */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    background: #F6C470;
+}
+.bg{
+    position: absolute;
+    top:0;
+    left: 0;
+    width:100%;
+    z-index:-1;
+}
+.descripe{
+    width:3.31rem;
+    font-size: 0.16rem;
+    color:rgba(51,51,51,1);
+    margin: 0 auto;
+    margin-top: 2.4rem;
+    margin-bottom: .3rem;
+    /* text-align: justify; */
+}
+
+
+.item-title {
+    width: 100%;
+    height: .6rem;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */ /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.item-title.active {
+    border-radius: 8px 8px 0 0;
+}
+
+.item-title h3 {
+    margin-left: .25rem;
+    font-size: .16rem;
+    color: #333333;
+}
+
+.item-title img {
+    font-style: normal;
+    width: .16rem;
+    height: .09rem;
+    margin-right: .25rem;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    transition: all 0.1s;
+}
+
+.item-content {
+    display: none;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    padding: 0rem .25rem 0 .25rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 0.15rem;
+}
+
+.item-content .content-tips {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */ /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: flex-start;
+    margin-bottom: .1rem;
+}
+
+.number-content-tips {
+    /* margin-left: .15rem; */
+}
+
+.item-content img {
+    max-width: 100%;
+    margin: .2rem 0 .25rem;
+}
+
+.content-tips .number i {
+    float: left;
+    display: block;
+    width: .2rem;
+    height: .2rem;
+    font-size: .14rem;
+    color: #FF5645;
+    border: 2px solid #FF5645;
+    border-radius: 50%;
+    font-style: normal;
+    text-align: center;
+    line-height: .2rem;
+    margin-right: .1rem;
+}
+
+.content-tips p {
+    font-size: .16rem;
+    color: #333333;
+    line-height: .22rem;
+    /* text-align:  justify; */
+}
+
+.item-btn {
+    float: left;
+    width: .91rem;
+    height: .35rem;
+    font-size: .14rem;
+    color: #FFFFFF;
+    background: #FF5645;
+    border-radius: 8px;
+    text-align: center;
+    line-height: .35rem;
+}
+
+.margin-horizontal {
+    margin: 0 .07rem;
+}
+
+.btn-group {
+    height: auto;
+    overflow: hidden;
+    margin-bottom: .3rem;
+}
+
+.item-content-title {
+    font-size: .16rem;
+    color: #333333;
+    font-weight: 900;
+    margin-bottom: .1rem;
+    margin-left: .15rem;
+}
+
+.item{
+    width:3.5rem;
+    /* height:0.6rem; */
+    background:rgba(255,255,255,1);
+    border-radius: 0.05rem;
+    margin: .2rem auto;
+}
+.notice{
+    height: 0.26rem;
+    font-size: 0.14rem;
+    color:rgba(153,153,153,1);
+}
+.notice2{
+    font-size: 0.14rem;
+    color:rgba(153,153,153,1);
+    height:auto;
+    text-align: justify;
+}
+.watch{
+    position: absolute;
+    width: .5rem;
+    height: .5rem;
+    top: 1.2rem;
+    left: 1.66rem;
+    border-radius: 50%;
+    display:  inline-block;
+}

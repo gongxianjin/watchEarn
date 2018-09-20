@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <title>Bonus Calendar</title>
+    <link rel="shortcut icon" href="../images/juxinwen.ico">
+    <link rel="stylesheet" href="../css/reading-reward.css?t=0420.01">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+            docEl.style.fontSize = oSize + 'px';
+        }
+
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+<div id="container" v-cloak>
+    <div id="header">
+        <img src="../images/reading-reward1.png" alt="">
+        <p>Got <span class="red" v-text="finishGold"></span> coins,<span class="red" v-text="potentialGold"></span> coins to earn</p>
+    </div>
+    <div id="content">
+        <div class="rows">
+            <div class="block" v-for="(item,key,index) in dayList">
+                <p class="date">{{key}}</p>
+                <template v-if="item==false">
+                    <div class="status">
+                        <img src="../images/reading-reward5.png" alt="" >
+                        <span class="desc"></span>
+                    </div>
+                </template>
+                <template v-else-if="item>0">
+                    <div class="status-reward">
+                        <img src="../images/reading-reward2.png" alt="" >
+                        <span class="orange">+{{item}}</span>
+                        <img src="../images/reading-reward3.png" alt="">
+                    </div>
+                </template>
+                <template v-else-if="item<0">
+                    <div class="status-reward"  >
+                        <!--<template v-if="index>2">-->
+                            <!--<span style="font-size: 12px" >{{dayMark(index)}}</span>-->
+                        <!--</template>-->
+                        <div style="flex-direction: row;">
+                            <span>+{{item*-1}}</span>
+                            <img src="../images/reading-reward4.png" alt="" >
+                        </div>
+
+                    </div>
+                </template>
+                <template v-else-if="item==null">
+                </template>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <p>Watch 6 dollar-marked videos at least to get your bonus everyday, Don't miss a day or you will have to start again</p>
+        </div>
+        <div id="fiexd">
+            <a href="javascript:void(0)" @click="clickReadBtn">Watch  & Earn</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script src="../js/vue.min.js"></script>
+<script src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript">
+    'use strict';
+setupWebViewJavascriptBridge(function(bridge) {
+    bridge.callHandler('login', {'key':'value'}, function responseCallback(responseData) {
+        dataParam = JSON.parse(responseData);
+        var params = '';
+        var data = dataParam;
+        for (key in data) {
+            params += key + '=' + data[key] + '&';
+        }
+        var pam = params.substr(0, params.length - 1);
+    var app = new Vue({
+        el: '#container',
+        data: function data() {
+            return {
+                finishGold: '',
+                potentialGold: '',
+                dayList: [],
+                daysIndex: null
+            };
+        },
+        created: function() {
+            this.getInfo();
+        },
+        methods: {
+            //本人信息接口
+            getInfo: function getInfo() {
+                var _this = this;
+                axios.get(global.url + "mission_new/info?id=25", {
+                    params: dataParam
+                }).then(function (res) {
+                    var data = res.data.data;
+                    _this.finishGold = data.finish_gold;
+                    _this.potentialGold = data.potential_gold;
+                    _this.dayList = data.days_finish;
+                    //console.log(res.data.data);
+                }).catch(function (error) {
+                    // alert(error);
+                });
+            },
+            dayMark: function dayMark(index) {
+                if (this.daysIndex == null) this.daysIndex = index;
+                index = index - this.daysIndex + 4;
+                return "Lasts " + index + " days";
+            },
+            clickReadBtn: function clickReadBtn() {
+                bridge.callHandler('toMainPage', {'key':'value'}, function responseCallback(responseData) {});
+            }
+
+        }
+    });
+})
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<style type="text/css">
+    @media (max-width: 375px) {
+        .edit-form tr td input{width:100%;}
+        .edit-form tr th:first-child,.edit-form tr td:first-child{
+            width:20%;
+        }
+        .edit-form tr th:last-child,.edit-form tr td:last-child{
+            display: none;
+        }
+    }
+</style>
+<div class="panel panel-default panel-intro">
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div id="toolbar" class="toolbar">
+                {:build_toolbar('refresh,add,delete')}
+            </div>
+            <table id="table" class="table table-striped table-bordered table-hover"
+                   data-operate-edit="{:$auth->check('wechat/config/edit')}"
+                   data-operate-del="{:$auth->check('wechat/config/del')}"
+                   width="100%">
+            </table>
+
+        </div>
+    </div>
+
+</div>
+

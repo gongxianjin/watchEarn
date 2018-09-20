@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>我的提现</title>
+    <link rel="stylesheet" href="__STATIC__css/cssRest.css" />
+    <link rel="stylesheet" href="__STATIC__css/withdrawal.css?t=032201" />
+</head>
+<body>
+	<div id="app">
+	<p class="total"><em>{$data.balance}</em><span>元</span></p>
+	<p class="warmNotice"><img src="__STATIC__css/smile.png"/><span>温馨提示：提现金额最少10元</span></p>
+	<p class="money">提现金额</p>
+	<form id="cashfrom" method="post" action="{:url('Usercenter/cash')}">
+		<input type="hidden" name="__token__" value="{$Request.token}" />
+	<div class="write">
+		<em>￥</em>
+		<input type="number" name="amount" placeholder="0.00"/>
+	</div>
+	{if condition="$data.canCash eq 1"}
+	 <a href="javascript:void(0)" id="play"  class="sure" >确认提现</a>
+	 {else/}
+	 <a href="javascript:void(0)" id="play2"  class="nosure" v-else>确认提现</a>
+	 {/if}
+		<!--无法提现弹层-->
+		<div class="unabledChange" style="display: none;">
+			<div class="unabledCon">
+				<h6>无法提现</h6>
+				<p>提现金额最少10元,完成每日任务，邀请收徒，观看视频都能获得收益</p>
+				<p>快去赚钱吧！</p>
+				<div class="invitation">
+					<a href="javascript:void(0)">观看赚钱</a>
+					<a href="../yqst/share.html">邀请赚钱</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+</body>
+<script type="text/javascript" src="__STATIC__js/default.js"></script>
+<script type="text/javascript" src="__STATIC__js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/layer/layer.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var max_amount = {$data.balance};
+		$("#play").click(function(){
+			var loading = layer.open({
+				    type: 2
+				    ,content: '加载中'
+				    ,shadeClose: false
+				});
+			var amount = $.trim($("input[name='amount']").val());
+				var er=true;
+				var msg = "";
+				var reg = /^[0-9]+.?[0-9]*$/;
+				if(amount==""||!reg.test(amount) || amount > max_amount){
+                	layer.close(loading);
+						 layer.open({
+		                    content:"请输入正确提现金额"
+		                    ,skin: 'msg'
+		                    ,time: 3 //3秒后自动关闭
+		                  });
+					return false;
+                }
+                if( amount < 10  ){
+                	layer.close(loading);
+						 layer.open({
+		                    content:"申请提现金额必须最小为10元"
+		                    ,skin: 'msg'
+		                    ,time: 3 //3秒后自动关闭
+		                  });
+					return false;
+                }
+            $("#cashfrom").submit();
+		})
+
+	})
+</script>
+</html>

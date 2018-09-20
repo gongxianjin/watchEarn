@@ -1,0 +1,38 @@
+@charset "utf-8";
+*{
+	vertical-align: middle;
+	padding:0;
+	margin:0;
+	box-sizing: border-box;
+}
+body{
+	background: #FFFFFF;
+}
+#app ul{
+	width:100%;
+}
+#app ul li{
+	padding:.3rem 0;
+	border-bottom: 1px solid #e5e5e5;
+	display:  inline-block;
+	width: 100%;
+	box-sizing:  border-box;
+}
+#app ul li em{
+	font-size: .36rem;
+	padding-left: .3rem;
+	float:  left;
+	line-height: .9rem;
+	width: 2.4rem;
+}
+#app ul li span{
+	font-size: .3rem;
+	display: block;
+}
+#app ul li .two{
+	margin-top: .15rem;
+}
+#app ul li p{
+	float: left;
+	margin-left: .3rem;
+}

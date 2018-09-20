@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>提现结果</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+	<script type="text/javascript" src="__STATIC__js/layer/layer.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		{if condition="$res.code eq 1"}
+			layer.open({
+			    content: "您的申请已提交审核,请注意关注微信消息,我们将在1-2个工作日内审核完毕!"
+			    ,btn: '确定'
+			    ,yes: function(index){
+			      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+			    }
+			  });
+		{elseif condition="$res.code eq -2" /}
+			layer.open({
+			    content: "请勿刷新页面"
+			    ,btn: '确定'
+			    ,yes: function(index){
+			     WeixinJSBridge.invoke('closeWindow',{},function(res){});
+			    }
+			  });
+		{else/}
+			layer.open({
+			    content: "申请失败"
+			    ,btn: '确定'
+			    ,yes: function(index){
+			     WeixinJSBridge.invoke('closeWindow',{},function(res){});
+			    }
+			  });
+
+		{/if}	
+	</script>
+</body>
+</html>

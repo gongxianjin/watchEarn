@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title> Invite  friends  now</title>
+    <link rel="stylesheet" href="../css/cssRest.css?t=1" />
+    <link rel="stylesheet" href="../js/swiper/swiper-3.4.1.min.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../slick/slick.css"/>-->
+    <link rel="stylesheet" href="../css/shoutu.css?t=0420.02" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="banner">
+        <h5 class="first"><em>Earn <span>7$+300% </span> friend's earning in 1<sup>st</sup> invite</em></h5>
+        <p class="share">Invite</p>
+    </div>
+    <div class="inviteCode">
+        <ul>
+            <li><span>Coins from friends</span><em id="gold">{{gold_tribute_total}}</em></li>
+            <li><a href="apprenticeDisciple.html?type=1"><span>Friends</span><em id="tudi">{{apprentice_total}}</em></a></li>
+            <li><a href="apprenticeDisciple.html?type=2"><span>2<sup>nd</sup> class -Friends</span><em id="tusun">{{disciple_num}}</em></a></li>
+            <li v-show="is_shifu">
+                <a href="myMaster.html">
+                    <span>My Inviter</span>
+                    <img src="../images/home_master_my_master.png"/>
+                </a>
+            </li>
+        </ul>
+        <p class="myCode btn" @click="copy" data-clipboard-action="copy" data-clipboard-target="#foo">
+            <span>My invitation code：<input  id="foo"  type="text" readonly="readonly"></span>
+        </p>
+        <!--邀请码复制弹层-->
+        <div class="inivitedBox" v-show="copyShow">
+            <div class="inivitedPop">
+                <img src="../images/closePop.png" @click="hide"/>
+                <p> The  Invitation Code has been copied </p>
+                <a href="share.html">Invite  friends  now</a>
+            </div>
+        </div>
+    </div>
+    <p style="height:.2rem;background: #EEEEEE;"></p>
+
+    <p class="goucheng"><i></i><span>Invitation Reward Form</span><i></i></p>
+    <div style="padding:.4rem .2rem">
+        <ul class="linkList">
+            <li>
+                <a href="basicReward.html">
+                    <h5>Basic</h5>
+                </a>
+            </li>
+            <li>
+                <a href="permanentCommission.html">
+                    <h5>Permanent</h5>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <h5 class="benefits">The bonus of invite</h5>
+    <p class="effective">Your income will rise sharply after your friends earned by watching video,you can be award max $10 from 1 friend.</p>
+
+    <p class="descList">1、The first invite，award 1~10 $</p>
+    <p class="descList">2、Every invite，award extra 2000 min coins</p>
+    <p class="descList">3、Earn 2-21 times contribution of your friends if they keep earning here</p>
+
+    <!-- 一键收徒弹层-->
+    <div class="enlighteningPop">
+        <div class="box">
+            <div class="qun">
+                <img src="../images/master_wechat.png" class="share-to-wechat" data-type="facebook">
+                <img src="../images/master_two_code.png" class="sweep" data-type="twitter">
+                <img src="../images/master_sms.png" class="share-to-sms"  data-type="linkedIn">
+            </div>
+            <p class="cancel">Cancel</p>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script src="../js/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var dataParam = GetBaseMsg();
+        var share_data = {};
+        //getData();
+        var app = new Vue({
+            el:'#app',
+            data:function () {
+                return{
+                    invitation_code:'',//邀请码
+                    gold_tribute_total:'',//金币数
+                    apprentice_total:'',//徒弟个数
+                    disciple_num:'',//徒孙个数
+                    copyShow:false,//复制弹层显示判断
+                    is_shifu:'',//是否师傅
+                    activityList:[],
+                }
+            },
+            created:function(){
+                var _this = this;
+                this.getDatda();
+            },
+            methods:{
+                swiper:function(){
+                    //可选选项，自动滑动
+                    var mySwiper = new Swiper('.swiper-container', {
+                        pagination : '.swiper-pagination',
+                        loop:true,
+                        speed: 400,
+                        autoplay: 2000,
+                        touchRatio : 1,
+                        shortSwipes : true,
+                        autoplayDisableOnInteraction: false,
+                        mode: 'horizontal',
+                        freeMode:false,
+                        longSwipesRatio:0.1,
+                        followFinger:false,
+                        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                        observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                    })
+                },
+                getDatda:function(){
+                    var _this = this;
+                    instance.post(global.url+'Apprentice/apprenticePageData',pam)
+                        .then(function(res){
+                            if(res.data.code==200){
+                                var data = res.data.data;
+                                _this.invitation_code = data.invitation_code;
+                                _this.gold_tribute_total = data.gold_tribute_total;
+                                _this.apprentice_total = data.apprentice_total;
+                                _this.disciple_num = data.disciple_num;
+                                _this.is_shifu = data.is_shifu;
+                                $("#foo").val(data.invitation_code);
+                                if(_this.is_shifu){
+                                    $(".inviteCode li").css({"width":"25%"});
+                                }else{
+                                    $(".inviteCode li").css({"width":"33.333%"});
+                                }
+                            }
+                        }).catch(function(error){
+
+                    })
+                },
+                copy:function(){
+                    var _this = this;
+                    var clipboard = new Clipboard('.btn');
+                    clipboard.on('success', function (e) {
+                        _this.copyShow = true;
+                    });
+                },
+                hide:function(){
+                    var _this = this;
+                    _this.copyShow = false;
+                }
+            }
+        });
+
+        $(".share").click(function(){
+            $(".enlighteningPop").show();
+        })
+
+        $(".qun img").click(function(){
+            var obj = $(this);
+            if(!share_data.invitation_code){
+                //没有获取到重新获取
+                $.ajax({
+                    url:global.url + "shareWithInvitationCode",
+                    type:'POST',
+                    data:dataParam,
+                    success:function(res){
+                        if(res.code == 200){
+                            share_data = res.data;
+                        }
+                    },
+                    complete:function(){
+                        share(obj);
+                    }
+                })
+            }else{
+                share(obj);
+            }
+           /* if($(obj).attr("data-type")!="share_income"){
+                $(".enlighteningPop").show();
+            }*/
+
+        });
+
+        $(".cancel").click(function(){
+            $(".enlighteningPop").hide();
+        });
+
+        hide(".enlighteningPop");
+       stop(".enlighteningPop .box");
+
+        function share(obj){
+            var type = $(obj).attr("data-type");
+            //微信好友 微信群
+            if(type == "facebook"){
+                var data = {type:0,title:share_data.default.title,content:share_data.default.content,
+                    url:share_data.default.url,imgUrl:share_data.default.imgUrl,wechatShareType:4};
+                // console.log(data);
+                window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {});
+            }
+            //twitter
+            if(type == "twitter"){
+                var data = {type:1,title:share_data.default.title,content:share_data.default.content,
+                    url:share_data.default.url,imgUrl:share_data.default.imgUrl,wechatShareType:4};
+                // console.log(data);
+                window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) { });
+            }
+
+            //linkedIn
+            if(type == "linkedIn"){
+                var data = {type:3,title:share_data.default.title,content:share_data.default.content,
+                    url:share_data.default.url,imgUrl:share_data.default.imgUrl,wechatShareType:4};
+                window.WebViewJavascriptBridge.callHandler('shareToOne',data, function(responseData) {});
+            }
+        }
+    })
+</script>
+</html>

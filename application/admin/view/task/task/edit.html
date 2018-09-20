@@ -1,0 +1,136 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="c-title" class="control-label col-xs-12 col-sm-2">任务活动标题:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="{$row.title}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-key_code" class="control-label col-xs-12 col-sm-2">key值:</label>
+        <div class="col-xs-12 col-sm-4"> 
+            keyCode <input id="c-key_code" data-rule="required" class="form-control" name="row[key_code]" type="text" value="{$row.key_code}">
+        </div>
+        <div class="col-xs-12 col-sm-4"> 
+           keyCodeClass <input id="c-key_code_class" data-rule="required" class="form-control" name="row[key_code_class]" type="text" value="{$row.key_code_class}">
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">是否有效:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[is_activation]', ['0'=>'无效', '1'=>'有效'],$row.is_activation)}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">是否登录:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[is_login]', ['0'=>'不需要', '1'=>'需要'],$row.is_login)}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-button" class="control-label col-xs-12 col-sm-2">按钮描述:</label>
+        <div class="col-xs-12 col-sm-8"> 
+            <input id="c-button" data-rule="required" class="form-control" name="row[button]" type="text" value="{$row.button}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">按钮点击类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[button_type]', ['1'=>'URL', '2'=>'APP'],$row.button_type)}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-button_url" class="control-label col-xs-12 col-sm-2">按钮地址或方法:</label>
+        <div class="col-xs-12 col-sm-8"> 
+            <input id="c-button_url" data-rule="required" class="form-control" name="row[button_url]" type="text" value="{$row.button_url}">
+        </div>
+    </div>
+    
+
+
+
+    <div class="form-group">
+        <label for="c-tile_type" class="control-label col-xs-12 col-sm-2">分类:</label>
+        <div class="col-xs-12 col-sm-8">
+            <!-- <input id="c-tile_type" data-rule="required" data-source="{:url('/admin/task/task/selectpage')}" class="form-control selectpage" name="row[tile_type]"   type="text" value="{$row.tile_type}"> -->
+              {:build_select('row[tile_type]', $d, $row['tile_type'], ['class'=>'form-control selectpicker', 'data-rule'=>'required', 'data-id'=>$row['tile_type'], 'data-pid'=>$row['tile_type']])} 
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="c-gold_flag_title" class="control-label col-xs-12 col-sm-2">可获得金币数量:</label>
+        <div class="col-xs-12 col-sm-2"> 
+         最小 <input id="c-gold_flag" data-rule="required" class="form-control" name="row[gold_flag]" type="number" value="{$row.gold_flag}">
+        </div>
+        <div class="col-xs-12 col-sm-2"> 
+           最大 <input id="c-gold_flag_max" data-rule="required" class="form-control" name="row[gold_flag_max]" type="number" value="{$row.gold_flag_max}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-gold_flag_title" class="control-label col-xs-12 col-sm-2">描述可获得数量:</label>
+        <div class="col-xs-12 col-sm-2"> 
+            描述 <input id="c-title_gold" data-rule="required" class="form-control" name="row[title_gold]" type="text" value="{$row.title_gold}">
+        </div>
+        <div class="col-xs-12 col-sm-8"> 
+           类型  {:build_radios('row[title_gold_type]', ['1'=>'金币', '2'=>'红包'],$row.title_gold_type)}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-gold_tribute" class="control-label col-xs-12 col-sm-2">师傅进贡数量:</label>
+        <div class="col-xs-12 col-sm-2"> 
+            最小 <input id="c-gold_tribute" data-rule="required" class="form-control" name="row[gold_tribute]" type="number" value="{$row.gold_tribute}">
+        </div>
+        <div class="col-xs-12 col-sm-2"> 
+           最大 <input id="c-gold_tribute_max" data-rule="required" class="form-control" name="row[gold_tribute_max]" type="number" value="{$row.gold_tribute_max}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-gold_grandfather" class="control-label col-xs-12 col-sm-2">师祖进贡数量:</label>
+        <div class="col-xs-12 col-sm-2"> 
+            最小 <input id="c-gold_grandfather" data-rule="required" class="form-control" name="row[gold_grandfather]" type="number" value="{$row.gold_grandfather}">
+        </div>
+        <div class="col-xs-12 col-sm-2"> 
+           最大 <input id="c-gold_grandfather_max" data-rule="required" class="form-control" name="row[gold_grandfather_max]" type="number" value="{$row.gold_grandfather_max}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-activation_time" class="control-label col-xs-12 col-sm-2">活动时间:</label>
+        <div class="col-xs-12 col-sm-4"> 
+            <input id="c-activation_time" data-rule=""  class="form-control datetimepicker" data-date-format="YYYY-MM-DD" name="row[activation_time]" type="text" value="{$row.activation_time|date='y-m-d',###}">
+        </div>
+        <div class="col-xs-12 col-sm-4"> 
+            <input id="c-expire_time" data-rule=""  class="form-control datetimepicker" data-date-format="YYYY-MM-DD" name="row[expire_time]" type="text" value="{$row.expire_time|date='y-m-d',###}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-num" class="control-label col-xs-12 col-sm-2">参与次数:</label>
+        <div class="col-xs-12 col-sm-2"> 
+            次数 <input id="c-num" data-rule="required" class="form-control" name="row[num]" type="text" value="{$row.num}">
+        </div>
+        <div class="col-xs-12 col-sm-2"> 
+           频率 <input id="c-sycle" data-rule="required" class="form-control" name="row[sycle]" type="number" value="{$row.sycle}">
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            类型 {:build_radios('row[participation_type]', ['1'=>'次数', '2'=>'周期'],$row.participation_type)}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-content" class="control-label col-xs-12 col-sm-2">活动描述:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" class="form-control " rows="10" name="row[content]">{$row.content}</textarea>
+        </div>
+    </div>
+    <div class="form-group hide layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+<script src="http://cdn.demo.fastadmin.net/assets/js/require.js" data-main="http://cdn.demo.fastadmin.net/assets/js/require-backend.min.js?v=1.0.1"></script>
+
+

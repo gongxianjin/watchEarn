@@ -1,0 +1,130 @@
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in">
+                <div class="widget-body no-padding">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-body">
+                                <table id="table" class="table table-striped table-bordered table-hover" data-operate-edit="1" data-operate-del="1" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center; vertical-align: middle; " data-field="name">
+                                            <div class="th-inner ">
+                                                名称
+                                            </div>
+                                            <div class="fht-cell"></div></th>
+                                        <th style="text-align: center; vertical-align: middle; " data-field="type">
+                                            <div class="th-inner ">
+                                                数量
+                                            </div>
+                                            <div class="fht-cell"></div></th>
+                                        <th style="text-align: center; vertical-align: middle; " data-field="operate">
+                                            <div class="th-inner ">
+                                                操作
+                                            </div>
+                                        <div class="fht-cell"></div></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody data-listidx="0">
+                                    <tr data-index="0" class="">
+                                        <td style="text-align: center; vertical-align: middle; ">总徒弟量</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$sontotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a target="_blank" href="/admin/user/apprentice/index?ids={$user_id}" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+                                    <tr data-index="1">
+                                        <td style="text-align: center; vertical-align: middle; ">总徒孙量</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$grandsontotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a  target="_blank" href="/admin/user/apprentice/index?grandsonids={$user_id}"class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+                                    <tr data-index="2">
+                                        <td style="text-align: center; vertical-align: middle; ">与徒弟meid相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$sonMeidTotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&meid={$meid}" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+                                    <tr data-index="3">
+                                        <td style="text-align: center; vertical-align: middle; ">与徒弟密码相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$sonPasswdTotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&passwd={$passwd}" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+                                    <tr data-index="4">
+                                        <td style="text-align: center; vertical-align: middle; ">此徒弟之间meid相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$sonTogetherMeidTotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&type=meid" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr data-index="4">
+                                        <td style="text-align: center; vertical-align: middle; ">此徒弟之间密码相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$sonTogetherPasswdTotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&type=login_passwd" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr data-index="4">
+                                        <td style="text-align: center; vertical-align: middle; ">此徒弟与徒孙之间meid相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$sonAndGrandsonMeids}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&level=meid&leveltype=1" class="btn btn-info btn-xs btn-detail btn-dialog" title="徒弟详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 徒弟详情</a>
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&level=meid&leveltype=0" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr data-index="4">
+                                        <td style="text-align: center; vertical-align: middle; ">此徒弟与徒孙之间密码相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$sonAndGrandsonPasswds}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&level=login_passwd&leveltype=1" class="btn btn-info btn-xs btn-detail btn-dialog" title="徒弟详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 徒弟详情</a>
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&level=login_passwd&leveltype=0" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr data-index="4">
+                                        <td style="text-align: center; vertical-align: middle; ">此徒孙之间meid相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$songrandTogetherMeidTotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?grandsonids={$user_id}&type=meid" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr data-index="4">
+                                        <td style="text-align: center; vertical-align: middle; ">此徒孙之间密码相同个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$subgrandPasswdTogethers}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?grandsonids={$user_id}&type=login_passwd" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr data-index="4">
+                                        <td style="text-align: center; vertical-align: middle; ">此同一ip的其他用户个数</td>
+                                        <td style="text-align: center; vertical-align: middle; ">{$ipTotals}</td>
+                                        <td style="text-align: center; vertical-align: middle; ">
+                                            <a href="/admin/user/apprentice/index?ids={$user_id}&ip={$ip}" class="btn btn-info btn-xs btn-detail btn-dialog" title="详情" data-table-id="table" data-field-index="8" data-row-index="0" data-button-index="0"><i class="fa fa-list"></i> 详情</a>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

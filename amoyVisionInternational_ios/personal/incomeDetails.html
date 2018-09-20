@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Transactions</title>
+    <link rel="stylesheet" href="../css/cssRest.css" />
+    <link rel="stylesheet" href="../css/incomeDetails.css?t=0601.27" />
+	<link rel="stylesheet" href="../js/dropload/dropload.css" />
+	<link rel="stylesheet" href="../css/loading.css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+ <div id="app" v-cloak>
+	 <div class="total">
+		 <div class="totalCon">
+			 <ul>
+				 <li>
+					 <span>Coins</span>
+					 <p id="gold_remain" v-cloak>{{user_gold}}</p>
+					 <a href="javascript:void(0)" @click="exchange">Exchange</a>
+				 </li>
+				 <li>
+					 <span>Balance</span>
+					 <p class="money" v-text="'$'+user_balance"></p>
+					 <a href="javascript:void(0)" @click="tixian">Withdraw</a>
+				 </li>
+			 </ul>
+		 </div>
+	 </div>
+
+
+	 <p class="huilv">Rate:600 coins = $0.01</p>
+
+
+	 <div class="bill" style="width: 90%;margin-left: 5%">
+		 <a href="./billboard.html"><img src="../images/billboard-img.png" style="width: 100%;" alt=""></a>
+	 </div>
+	 <div class="bill" style="width: 90%;margin-left: 5%;text-align: center">
+		 <a href="./joinUs.html" style="color: red">Join Us</a>
+	 </div>
+
+	 <!--<p class="h20"></p>-->
+
+		<p class="tab">
+			<a href="javascript:" class="item" id="tab1" >Coins </a>
+			<a href="javascript:" class="item" id="tab2" >Cash </a>
+			<a href="javascript:" class="item" id="tab3">Expenditure</a>
+		</p>
+
+
+	 <div class="content">
+		 <ul class="incomeList lists" id="gold">
+			 <li v-for="(item,index) in golb_record">
+                 <div class="left">
+                     <span v-text="item.title"></span>
+                     <label v-text="item.update_time"></label>
+                 </div>
+				 <em v-cloak v-text="'+'+item.gold_tribute"></em>
+			 </li>
+		 </ul>
+
+		 <ul class="incomeList lists" id="money">
+			 <li v-for="(item,index) in money">
+				 <div class="left">
+					 <span  v-text="item.title"></span>
+					 <label v-text="item.create_time"></label>
+				 </div>
+				 <em v-if="item.balance > 0" v-text="'+$'+item.balance"></em>
+				 <em v-if="item.balance < 0" v-text="'$'+item.balance"></em>
+			 </li>
+		 </ul>
+		 <ul class="incomeList lists" id="outlay">
+			 <li v-for="(item,index) in outpay">
+				 <div class="left">
+					 <span v-cloak v-text="item.desc"></span>
+					 <label v-cloak v-text="item.wechat_pay_date"></label>
+				 </div>
+				 <em v-cloak v-text="'-$'+item.money"></em>
+			 </li>
+		 </ul>
+
+	 </div>
+	<p class="h96"></p>
+	 <!--无法兑换金币弹层-->
+	 <div class="unabledChange" v-show="isShowUnabled" @click="hide()">
+		 <div class="unabledCon">
+			 <h6>Failed !</h6>
+			 <p>Balance insufficient</p>
+			 <div class="invitation">
+				 <a href="javascript:void(0)" @click="watch()"> Watch & Earn</a>
+				 <a href="../makeMoney/share.html">Invite & Earn</a>
+			 </div>
+		 </div>
+	 </div>
+
+	 <!--兑换成功弹层-->
+	 <div class="success" v-show="isShowSuccess" @click="hide()">
+		 <div class="successCon">
+			 <img src="../images/success_exchange.png"/>
+			 <span>{{exchangeMoney}}<i>$</i></span>
+			 <p>{{exchangeGold}} Exchange has Done </p>
+		 </div>
+	 </div>
+
+	 <!--输入邀请码注册弹层-->
+	 <div class="registered1" v-show="regionModel" @click="hideModel()">
+		 <div class="regCon" >
+			 <img src="../images/login.png" onclick="gotoAPPLogin()" />
+		 </div>
+	 </div>
+
+
+
+    <div class="paypalPop" v-show="showPaypal">
+        <div class="paypalCon" v-bind:class="{'account-has':accountHas}">
+            <div class="titleTop">
+				<img src="../images/paypal.png" class="payLogo"/>
+				<!--<img src="../images/closePal.png" class="closePay" @click="hidePaypal()"/>-->
+			</div>
+			<div v-if="AccountMsg">
+				<input type="text"  placeholder="Enter your New Paypal account"  class="account"/>
+			</div>
+			<div v-else>
+				<input type="text"  placeholder="Enter your Paypal account"  class="account"/>
+			</div>
+
+			<p class="noticePal">enter the correct account to receive payment</p>
+
+			<div v-show="showPaypalUser" style="width: 5rem;height: 1rem;">
+				<button class="paypalBtn" @click="enterUserPaypal">Use : {{paypal_mail}}</button>
+			</div>
+
+			<div class="bottomPal">
+				<div class="not" @click="hidePaypal()">Cancel</div>
+				<div class="yes" @click="Bindpaypal">OK</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/Android.js?y=1"></script>
+<script type="text/javascript" src="../js/dropload/dropload.min.js"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+<script type="text/javascript">
+setupWebViewJavascriptBridge(function(bridge) {
+    bridge.callHandler('login', {'key':'value'}, function responseCallback(responseData) {
+        dataParam = JSON.parse(responseData);
+        var params = '';
+        var data = dataParam;
+        for (key in data) {
+            params += key + '=' + data[key] + '&';
+        }
+        var pam = params.substr(0, params.length - 1);
+        dataParam = pam;
+        alert(454545);
+    var app = new Vue({
+        el:'#app',
+        data:function(){
+            return{
+                login_flag:'',//登录状态
+                user_gold:'0',//金币
+                user_balance:'0',//零钱
+                golb_record:[],//金币明细
+                money:[],//现金
+                outpay:[],//支出
+                total_balance:'',//总收入
+                page:1,
+                limit:5,
+                page1:1,
+                limit1:5,
+                page2:1,
+                limit2:5,
+                tme:'',
+                accountHas:false,
+                isShowUnabled:false,
+                isShowSuccess:false,
+				AccountMsg:false,
+                exchangeMoney:'',//退换金额
+                exchangeGold:'',//兑换金币
+                regionModel:false,//注册弹框显示
+                showPaypal:false,//显示绑定paypal框
+                // showPaypalEmpty:false,//paypal为空
+                showPaypalUser:false,//显示绑定的paypal
+				paypal_mail:'',
+                is_has_paypal:''//是否绑定了Paypal
+            }
+        },
+        mounted: function () {
+            this.$nextTick(function(){
+                var itemIndex = 0;
+                var tab1LoadEnd = false;
+                var tab2LoadEnd = false;
+                var tab3LoadEnd = false;
+                // tab
+                $('.tab .item').on('click',function(){
+                    var $this = $(this);
+                    itemIndex = $this.index();
+                    $this.addClass('cur').siblings('.item').removeClass('cur');
+                    $('.lists').eq(itemIndex).show().siblings('.lists').hide();
+
+                    // 如果选中菜单一
+                    if(itemIndex == '0'){
+                        // 如果数据没有加载完
+                        if(!tab1LoadEnd){
+                            // 解锁
+                            dropload.unlock();
+                            dropload.noData(false);
+                        }else{
+                            // 锁定
+                            dropload.lock('down');
+                            dropload.noData();
+                        }
+                        // 如果选中菜单二
+                    }else if(itemIndex == '1'){
+                        if(!tab2LoadEnd){
+                            // 解锁
+                            dropload.unlock();
+                            dropload.noData(false);
+                        }else{
+                            // 锁定
+                            dropload.lock('down');
+                            dropload.noData();
+                        }
+                    }else if(itemIndex == '2'){
+                        if(!tab3LoadEnd){
+                            // 解锁
+                            dropload.unlock();
+                            dropload.noData(false);
+                        }else{
+                            // 锁定
+                            dropload.lock('down');
+                            dropload.noData();
+                        }
+                    }
+                    // 重置
+                    dropload.resetload();
+                });
+
+                var type = getUrlParam("type");
+                if(type==1){
+                    $('.tab .item').eq(0).addClass('cur').siblings('.item').removeClass('cur');
+                    $('.lists').eq(0).show().siblings('.lists').hide();
+                    itemIndex=0;
+                }else if(type==2){
+                    $('.tab .item').eq(1).addClass('cur').siblings('.item').removeClass('cur');
+                    $('.lists').eq(1).show().siblings('.lists').hide();
+                    itemIndex=1
+                }else if(type==3){
+                    $('.tab .item').eq(2).addClass('cur').siblings('.item').removeClass('cur');
+                    $('.lists').eq(2).show().siblings('.lists').hide();
+                    itemIndex=2;
+                }
+
+                var counter = 1;
+                // 每页展示10个
+                var num = 10;
+                var pageStart = 0,pageEnd = 0;
+                // dropload
+                var dropload = $('.content').dropload({
+                    scrollArea : window,
+                    autoLoad:true,
+                    domDown : {
+                        domNoData  : '<div class="dropload-noData">No more record!</div>'
+                    },
+                    loadDownFn : function(me){
+                        //vm.getHome(me,vm.page);
+                        // 加载菜单一的数据
+                        if(itemIndex == '0'){
+                            app.tme = me;
+                            //dataParam.type=1;
+                            //金币明细
+                            app.gold(app.page,app.limit,me,false);
+
+                        }else if(itemIndex == '1'){
+                            app.tme = me;
+                            //现金明细
+                            app.momey(app.page1,app.limit1,me,false);
+
+                        }else if(itemIndex=='2'){
+                            app.tme = me;
+                            //支出明细
+                            app.outPay(app.page2,app.limit2,me,false);
+                        }
+                    }
+                });
+
+            })
+        },
+        created:function(){
+            var _this = this;
+            //头部总收入
+            instance.post(global.url+'User/index',pam)
+                .then(function(res){
+                    _this.user_gold = res.data.data.userMsg.gold_flag;
+                    _this.user_balance = res.data.data.userMsg.balance;
+                    _this.total_balance = res.data.data.userMsg.total_balance;
+                    _this.login_flag = res.data.data.login_flag;
+                    _this.is_has_paypal = res.data.data.userMsg.is_has_paypal;
+                    _this.paypal_mail = res.data.data.userMsg.paypal_mail;
+                })
+        },
+        methods:{
+            //金币兑换零钱
+            exchange:function(){
+                var _this = this;
+                instance.post(global.url+'cash/exchange',pam)
+                    .then(function (res) {
+                        if(res.data.code==200){
+                            _this.user_gold = res.data.data.left_gold;
+                            _this.user_balance=res.data.data.balance;
+                            //现金增加一条兑换记录
+                            app.momey(1,app.limit1,app.tme,true);
+                            _this.exchangeGold = res.data.data.convert_gold;//兑换的金币
+                            _this.exchangeMoney = res.data.data.increment_balance;//兑换金额
+                            $("#total").html(
+
+                                parseFloat(
+                                    (
+                                        parseFloat($("#total").text()) * 100
+                                        +
+                                        parseFloat(res.data.data.increment_balance) * 100
+                                    )/100
+                                ).toFixed(2)
+                            );
+                            _this.isShowSuccess = true;
+                            setTimeout(function(){
+                                _this.isShowSuccess = false;
+                            },3000)
+
+                        }else{
+                            _this.isShowUnabled = true;
+                        }
+                    })
+            },
+            //现金
+            momey:function(page,pageSize,me,resh){
+                dataParam.page=page;
+                dataParam.pageSize=pageSize;
+                $.post(global.url+'balance/log',dataParam)
+                    .then(function(res){
+                        app.page1++;
+                        app.money = app.money.concat(res.data)
+                        if(res.data.length < app.limit1 ){
+                            // 数据加载完
+                            tab2LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+
+                        }
+                        me.resetload();
+                        if(resh==true){
+                            $("#money").html(" ");
+                        }
+                    })
+            },
+            //金币
+            gold:function(page,pageSize,me,resh){
+                dataParam.page=page;
+                dataParam.pageSize=pageSize;
+                $.post(global.url+'user/goldDetail',dataParam)
+                    .then(function(res){
+                        app.page++;
+                        app.golb_record = app.golb_record.concat(res.data.golb_record)
+                        if(res.data.golb_record.length < app.limit ){
+                            // 数据加载完
+                            tab1LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                        }
+                        //console.log(me);
+                        me.resetload();
+                    })
+            },
+            //支出
+            outPay:function(page,pageSize,me,resh){
+                dataParam.page=page;
+                dataParam.pageSize=pageSize;
+                $.post(global.url+'User/withdrawalsRecord',dataParam)
+                    .then(function(res){
+                        app.page2++;
+                        app.outpay = app.outpay.concat(res.data)
+                        if(res.data.length < app.limit2 ){
+                            // 数据加载完
+                            tab3LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                        }
+                        // 为了测试，延迟1秒加载
+                        /*setTimeout(function(){
+                             $('.lists').eq(itemIndex).append(result);
+                             每次数据加载完，必须重置
+                            me.resetload();
+                        },1000);*/
+                        me.resetload();
+                    })
+            },
+            //观看赚钱跳转ios
+            watch:function(){
+                bridge.callHandler('toMainPage', {'key':'value'}, function responseCallback(responseData) {});
+                //window.WebViewJavascriptBridge.callHandler('toMainPage',"", function(responseData) {});
+            },
+            hide:function(){
+                var _this = this;
+                _this.isShowUnabled = false;
+            },
+            //注册弹框隐藏
+            hideModel:function(){
+                var _this = this;
+                _this.regionModel = false;
+            },
+			hidePaypal:function(){
+                var _this = this;
+                _this.showPaypal = false;
+			},
+			//绑定paypal账号
+            Bindpaypal:function(){
+                  var _this = this;
+                  var account = $(".account").val();
+				// var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+				var reg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+				if(!reg.test(account)){
+				    // 'Email address only！';
+                    layer.open({
+                        content: 'Email address only！'
+                        ,skin: 'msg'
+                        ,time: 2 //2秒后自动关闭
+                    });
+				    return false;
+				}
+
+                dataParam.paypal=account;
+                  $.post(global.url+'User/Bind_paypal',dataParam)
+					  .then(function(res){
+					      if(res.code==200){
+                              layer.open({
+                                  content: res.msg
+                                  ,skin: 'msg'
+                                  ,time: 2 //2秒后自动关闭
+                              });
+                              setTimeout(function(){
+                                  window.location.href="withdraw.html";
+							  },2000)
+
+						  }else{
+                              layer.open({
+                                  content: res.msg
+                                  ,skin: 'msg'
+                                  ,time: 2 //2秒后自动关闭
+                              });
+						  }
+					  })
+			},
+			//使用已绑定的账号
+            enterUserPaypal:function()
+			{
+                window.location.href="withdraw.html";
+			},
+
+            //零钱提现
+            tixian:function(){
+                var _this = this;
+                //真实用户
+                if(_this.login_flag){
+                    if(_this.is_has_paypal){
+                        //绑定了paypal
+                        // window.location.href="withdraw.html";
+                        _this.showPaypal = true;
+                        _this.showPaypalUser = true;
+                        _this.showPaypalEmpty = false;
+                        _this.accountHas = true;
+                        _this.AccountMsg = true;
+					}else{
+                        _this.showPaypal = true;
+                        _this.showPaypalUser = false;
+                        _this.showPaypalEmpty = true;
+                        _this.accountHas = false;
+                        _this.AccountMsg = false;
+					}
+                }else{
+                    _this.regionModel = true;
+                }
+
+            }
+        }
+    });
+})})
+
+</script>
+</html>

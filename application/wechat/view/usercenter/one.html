@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>提现结果</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+	<script type="text/javascript" src="__STATIC__js/layer/layer.js"></script>
+</head>
+<body >
+	<script type="text/javascript">
+		window.onload=function(){
+			{if condition="$res.code eq -1"}
+				layer.open({
+				    content: "请先下载淘视界APP，完成新手任务后才能领取"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				      WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{elseif condition="$res.code eq 1" /}
+				layer.open({
+				    content: "新手福利已到账，请留意查看您的微信通知消息"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				     WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{elseif condition="$res.code eq -2" /}
+				layer.open({
+				    content: "您还有任务没有完成哦，请现在淘视界APP上完成新手任务"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				     WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{elseif condition="$res.code eq -3" /}
+				layer.open({
+				    content: "新手福利领取失败"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				     WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{elseif condition="$res.code eq -5" /}
+				layer.open({
+				    content: "您的余额不足,无法领取新手福利,快去淘视界APP完成任务吧！"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				     WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{else /}
+				layer.open({
+				    content: "新手福利领取失败！"
+				    ,btn: '确定'
+				    ,yes: function(index){
+				     WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				    }
+				  });
+			{/if}	
+		}
+		
+	</script>
+</body>
+</html>

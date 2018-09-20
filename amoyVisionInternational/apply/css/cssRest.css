@@ -1,0 +1,336 @@
+/* reset */
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p,
+blockquote, pre, hr, figure, table, caption, th, td, form, fieldset,
+legend, input, button, textarea, menu {
+    margin: 0;
+    padding: 0;
+    outline:none;
+}
+[v-cloak] {
+  display: none;
+}
+header, footer, section, article, aside, nav, hgroup, address, figure,
+figcaption, menu, details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+    font-weight: normal;
+}
+
+html, body, fieldset, img, iframe, abbr {
+    border: 0;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: normal;
+}
+
+[hidefocus], summary {
+    outline: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, small {
+    font-size: 100%;
+}
+
+sup, sub {
+    font-size: 83%;
+}
+
+pre, code, kbd, samp {
+    font-family: inherit;
+}
+
+q:before, q:after {
+    content: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+label, summary {
+    cursor: default;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, em, strong, b {
+    font-weight: bold;
+}
+
+del, ins, u, s, a, a:hover {
+    text-decoration: none;
+}
+
+body, textarea, input, button, select, keygen, legend {
+    font: 12px/1.14 arial, \5b8b\4f53;
+    color: #333;
+    outline: 0;
+}
+
+body {
+    background: #fff;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+/*去掉android点击事件产生的半透明蓝色背景*/
+*{ -webkit-tap-highlight-color: rgba(255, 255, 255, 0);}
+
+html,body{
+    height: 100%;
+}
+
+a{
+    color: #333;
+    text-decoration: none;
+}
+
+a,a:active,input {
+    outline:0
+}
+
+img {
+    border: 0;
+    border:none;
+}
+label{
+    margin-bottom:0;
+}
+@media (min-width: 320px){html{font-size: 42.6667px;} }
+@media (min-width: 360px){html{font-size: 48px;} }
+@media (min-width: 375px){html{font-size: 50px;} }
+@media (min-width: 384px){html{font-size: 51.2px;} }
+@media (min-width: 414px){html{font-size: 55.2px;} }
+@media (min-width: 448px){html{font-size: 59.7333px;} }
+@media (min-width: 480px){html{font-size: 48px;} }
+@media (min-width: 512px){html{font-size: 68.2667px;} }
+@media (min-width: 544px){html{font-size: 72.5333px;} }
+@media (min-width: 576px){html{font-size: 76.8px;} }
+@media (min-width: 608px){html{font-size: 81.0667px;} }
+@media (min-width: 640px){html{font-size: 85.3333px;} }
+@media (min-width: 750px){html{font-size: 100px;} }
+/*@font-face {
+
+    font-family: PFbold;
+    src:url('pictos/PINGFANG BOLD.TTF')format('truetype')
+}
+@font-face {
+    font-family: PFheavy;
+    src:url('pictos/PINGFANG HEAVY.TTF')format('truetype')
+}
+@font-face {
+    font-family: PFlight;
+    src:url('pictos/PINGFANG LIGHT.TTF')format('truetype')
+}
+@font-face {
+    font-family: PFmedium;
+    src:url('pictos/PINGFANG MEDIUM.TTF')format('truetype')
+}
+@font-face {
+    font-family: PFregular;
+    src:url('pictos/PINGFANG REGULAR.TTF')format('truetype')
+}*/
+
+
+body{
+    font-family:
+            'PFmedium','MyWebFont',
+            'Helvetica Neue','Helvetica',
+            'PingFangSC-Regular',
+            'STHeitiSC-Light',"Microsoft YaHei", 'Arial', sans-serif;
+    background: #eeeeee;
+    height:100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+.fr{
+    float:right;
+}
+.fl{
+    float:left;
+}
+.clear{
+    clear: both;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.text-blue{
+    color:#45a4ff;
+}
+.text-green{
+    color:#1cc597;
+}
+.text-orange{
+    color:#fc9900;
+}
+.text-orange1{
+    color: #fc5a00;
+}
+.text-gray{
+    color: #999999;
+}
+.text-center{
+    text-align: center;
+}
+.greenBg{
+    background: #1cc597;
+}
+.orangeBg{
+    background: #fc9900;
+}
+.orangeBg1{
+    background: #ff5a00;
+}
+.blueBg{
+    background: #45a4ff;
+}
+.grayBg{
+    background: #999999;
+}
+.pinkBg{
+    background: #ff764c;
+}
+
+/*.icon{
+    display: inline-block;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin:0 3px;
+}*/
+.fixer{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index:3;
+}
+.fixer ul{
+
+}
+.h210{
+    height:2.1rem;
+    width:100%;
+}
+
+.h190{
+    height:1.90rem;
+    width:100%;
+}
+
+.h122{
+    height:1.22rem;
+    width:100%;
+}
+
+.h116{
+    height:1.16rem;
+    width:100%;
+}
+
+.h100{
+    height:1.00rem;
+    width:100%;
+}
+.h98{
+    height:.98rem;
+    width:100%;
+}
+.h96{
+    height:.96rem;
+    width:100%;
+}
+.h55{
+    height:0.55rem;
+    width:100%;
+}
+.h40{
+    height:0.40rem;
+    width:100%;
+}
+.h20{
+    height:0.20rem;
+    width:100%;
+}
+
+
+
+.bRed1,.bOrange1,.bGreen1,.bBlue1{
+    display: inline-block;
+    border-radius:.16rem;
+    padding:.05rem .10rem;
+    margin-bottom:.08rem;
+}
+.bRed1{
+    border:.01rem solid #ff764c;
+    color:#ff764c;
+}
+.bOrange1{
+    border:.01rem solid #fc9900;
+    color:#fc9900;
+}
+.bGreen1{
+    border:.01rem solid #1cc597;
+    color:#1cc597;
+}
+.bBlue1{
+    border:.01rem solid #45a4ff;
+    color:#45a4ff;
+}
+
+div.vertical-align:before, div.vertical-align:after {
+    display: none;
+}
+
+/*返回顶部*/
+#back{
+    position:fixed;
+    bottom:2rem;
+    right:20px;
+    display: none;
+    z-index: 12;
+}
+#back img{
+    width:.95rem;
+    height:.94rem;
+}
+/*span背景色*/
+.getSqBg span{
+    display: inline-block;
+    line-height:.34rem;
+    color:#fff;
+    font-size:.22rem;
+    border-radius:.34rem;
+    text-align: center;
+    padding:0 .16rem;
+    margin-right:.10rem;
+}
+
+.sqbg1{background: #ff6d40;}
+.sqbg2{background: #ff8400;}
+.sqbg3{background: #2fc69d;}
+.sqbg4{background: #56acff;}

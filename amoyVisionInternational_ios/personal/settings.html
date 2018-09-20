@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Settings </title>
+    <link rel="stylesheet" href="../css/cssRest.css" />
+    <link rel="stylesheet" href="../css/set.css" />
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div class="mui-content" id="set">
+		
+		<ul class="mui-table-view mui-table-view-chevron" style="margin-top:.2rem">
+			<li class="mui-table-view-cell">
+				<a class="" href="javascript:void(0)" onclick="window.WebViewJavascriptBridge.callHandler('clearCache','',function(responseData){});">
+					Clear cache
+				</a>
+			</li>
+		</ul>
+		<ul class="mui-table-view mui-table-view-chevron" style="margin-top:.2rem">
+			
+			<li class="mui-table-view-cell">
+				<a class="" href="javascript:void(0)" onclick="window.WebViewJavascriptBridge.callHandler('checkUpdate','',function(responseData){});">
+					Update
+				</a>
+			</li>
+		</ul>
+
+		<ul class="mui-table-view mui-table-view-chevron" style="margin-top:.2rem">
+			<li class="mui-table-view-cell" style="text-align: center;" onclick="window.WebViewJavascriptBridge.callHandler('loginOut','',function(responseData){});">
+				<a  href="javascript:void(0)" style="padding-right:0">
+					Logout
+				</a>
+			</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+</html>

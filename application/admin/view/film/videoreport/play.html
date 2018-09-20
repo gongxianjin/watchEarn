@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="referrer" content="never">
+	<title></title>
+	<style type="text/css">
+		div{
+			height: 500px;
+			margin:auto;
+			text-align: center;
+		}
+		div video{
+			height: 80%;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<video src="{$row.video_url}" controls="controls" autoplay="true">
+			您的浏览器不支持 video 标签。
+		</video>
+	</div>
+</body>
+</html>

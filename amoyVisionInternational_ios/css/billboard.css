@@ -1,0 +1,142 @@
+.content{
+    width: 100%;
+    height: 15rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-img{
+    position: absolute;
+    top:0.2rem;
+    width: 40%;
+    left: 30%;
+    z-index: 1;
+}
+.top-1{
+    width: 30%;
+    position: absolute;
+    top: 3rem;
+    left: 35%;
+    z-index: 5;
+}
+.top-2{
+    width: 30%;
+    position: absolute;
+    top: 3rem;
+    left: 10%;
+    z-index: 4;
+}
+.top-3{
+    width: 30%;
+    position: absolute;
+    top: 3rem;
+    left: 60%;
+    z-index: 4;
+}
+.top-head-div{
+    background: #9EE7F5;
+    padding: 0.1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: auto;
+    border-radius: 1.5rem;
+    margin-top: -0.3rem;
+}
+.top-head{
+    border: 0.1rem solid #ffffff;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    line-height: 0;
+}
+.top-fist{
+    width: 0.7rem;
+    margin: auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    line-height: 0;
+}
+.top-name{
+    font-size: .2rem;
+    text-align: center;
+    line-height: .5rem;
+    height: 0.5rem;
+    overflow: hidden;
+}
+.top-money{
+    position: inherit;
+    top: 3.2rem;
+    width: 60%;
+    left: 20%;
+    font-size: .3rem;
+    text-align: center;
+    background: rgba(255,255,255,0.8);
+    border-radius: 1rem;
+    font-weight: bold;
+}
+.middle{
+    position: absolute;
+    top: 4.8rem;
+    z-index: 10;
+}
+
+.lists{
+    width: 100%;
+    line-height: 1rem;
+    position: inherit;
+    top: 1.2rem;
+    background: #ffffff;
+    height: 7.6rem;
+}
+.lists li{
+    width: 90%;
+    margin-left: 5%;
+    height: 1rem;
+    line-height: 1rem;
+}
+.top-list-num{
+    float: left;
+    width: 1rem;
+    text-align: center;
+    font-size: 0.2rem;
+    color: #999999;
+}
+.top-list-head{
+    float: left;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 1rem;
+    line-height: 0;
+    margin-top: 0.2rem;
+    overflow: hidden;
+}
+.top-list-name{
+    float: left;
+    width: 2rem;
+    text-align: left;
+    margin-left: 0.4rem;
+    font-size: 0.2rem;
+    color: #333333;
+    overflow: hidden;
+    height: 1rem;
+}
+.top-list-money{
+    float: right;
+    width: 2rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #333333;
+    font-weight: bold;
+}
+.footer-btn{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    bottom: 0.5rem;
+    height: 0.8rem;
+    font-size: 0.4rem;
+    line-height: 0.8rem;
+    border-radius: 1rem;
+    color: white;
+    text-align: center;
+    background: #6EB9C9;
+}

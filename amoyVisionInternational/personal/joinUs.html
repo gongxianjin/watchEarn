@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Join Us</title>
+    <meta name="keywords" content="your keywords">
+    <meta name="description" content="your description">
+    <meta name="author" content="author,email address">
+    <!-- 为移动设备添加 viewport -->
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <!-- iOS 图标 -->
+    <link rel="apple-touch-icon-precomposed" href="../images/juxinwen.ico">
+    <link rel="shortcut icon" href="../images/juxinwen.ico">
+    <link rel="stylesheet" href="../css/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="../css/joinus.css?a=1.121">
+</head>
+<body>
+
+<div class="content">
+    <div>
+        <img src="../images/zm_1.png" style="width: 100%" alt="">
+    </div>
+    <div>
+        <img src="../images/zm_2.png" style="width: 100%" alt="">
+    </div>
+    <div>
+        <img src="../images/zm_3.png" style="width: 100%" alt="">
+    </div>
+    <div>
+        <img src="../images/zm_4.png" style="width: 100%" alt="">
+    </div>
+    <div>
+        <img src="../images/zm_5.png" style="width: 100%" alt="">
+    </div>
+    <div>
+        <img src="../images/zm_6.png" style="width: 100%" alt="">
+    </div>
+    <div>
+        <img src="../images/zm_7.png" style="width: 100%" alt="">
+    </div>
+    <div class="form-div">
+        <div class="form-title">
+            Join Us
+        </div>
+        <div class="form-item">
+            <input type="text" name="facebook" value="" placeholder="Facebook ID">
+        </div>
+
+        <div class="form-item">
+            <input type="text" name="name" value="" placeholder="Legal name">
+        </div>
+
+        <div class="form-item">
+            <input type="text" name="real_id" value="" placeholder="National ID card No">
+        </div>
+
+        <div class="form-item">
+            <input type="text" name="address" value="" placeholder="Legal registered address">
+        </div>
+
+        <div class="form-item">
+            <input type="text" name="nationality" value="" placeholder="Country">
+        </div>
+
+        <div class="form-item submitBtn">
+            Submit
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/common.js?t=1"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+<!--<script type="text/javascript" src="../js/joinus.js?0.12519"></script>-->
+<script>
+    $(function () {
+       statistics('retail');
+    });
+    $("input").focus(function () {
+        personal.hideAd();
+    });
+    var click_flag = true;
+    $(".submitBtn").click(function () {
+        if(!click_flag){
+            return false;
+        }
+        click_flag = false;
+        var facebook = $("input[name=facebook]").val();
+        var name = $("input[name=name]").val();
+        var real_id = $("input[name=real_id]").val();
+        var address = $("input[name=address]").val();
+        var nationality = $("input[name=nationality]").val();
+
+        if(!facebook){
+            pageMsg("Please enter your Facebook account.");
+            click_flag = true;
+            return false;
+        }
+        if(!name){
+            pageMsg("Please input your name.");
+            click_flag = true;
+            return false;
+        }
+        if(!real_id || isNaN(real_id)){
+            pageMsg("Please input your National ID card No");
+            click_flag = true;
+            return false;
+        }
+        if(!address){
+            pageMsg("Please input your Legal registered address");
+            click_flag = true;
+            return false;
+        }
+        if(!nationality){
+            pageMsg("Please input your Country");
+            click_flag = true;
+            return false;
+        }
+        
+        dataParam.name = name;
+        dataParam.facebook = facebook;
+        dataParam.real_id = real_id;
+        dataParam.address = address;
+        dataParam.nationality = nationality;
+        $.post(global.url+'user/applyRetail',dataParam,function (json) {
+            pageMsg(json.msg);
+            if(json.code == 200){
+                setTimeout(function () {
+                    window.close();
+                },1000);
+            }
+            click_flag=true;
+        })
+
+
+    });
+
+
+    function pageMsg(str) {
+        layer.open({
+            content:str
+            ,skin: 'msg'
+            ,time: 2 //2秒后自动关闭
+        });
+    }
+</script>
+</html>

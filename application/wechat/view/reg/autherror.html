@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>提现结果</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+	<script type="text/javascript" src="__STATIC__js/layer/layer.js"></script>
+</head>
+<body >
+	<script type="text/javascript">
+		window.onload=function(){
+			layer.open({
+				content: "微信授权失败，请稍后重试!"
+				,btn: '确定'
+				,yes: function(index){
+					WeixinJSBridge.invoke('closeWindow',{},function(res){});
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>

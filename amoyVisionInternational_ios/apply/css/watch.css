@@ -1,0 +1,71 @@
+.w-1140{
+    width:1140px;
+    margin:0 auto;
+}
+.banner{
+    margin-top:20px;
+}
+.title{
+    font-size:34px;
+    color:rgba(51,51,51,1);
+    line-height:0px;
+    display:  inline-block;
+    padding: 60px 0;
+}
+.w-1140 ul{
+    display: inline-block;
+    width:100%;
+}
+.w-1140 ul li{
+    float: left;
+    width:33.333%;
+}
+.w-1140 ul li a{
+    display: inline-block;
+}
+.box{
+    width:320px;
+    height:200px;
+    position: relative;
+}
+.w-1140 ul li img.cover{
+    width:320px;
+    height:200px;
+}
+.w-1140 ul li img.play{
+    width:42px;
+    height:34px;
+    position: absolute;
+    right:20px;
+    bottom:20px;
+}
+.w-1140 ul li p{
+    font-size:18px;
+    color:rgba(51,51,51,1);
+    padding:20px 0;
+}
+.popup{
+    width:100%;
+    height:100%;
+    z-index:99999;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    top:0;
+    left: 0;
+    display: none;
+}
+.popup video{
+    width:500px;
+    height:200px;
+}
+.popupCon{
+    width:580px;
+    height:360px;
+    background: #000000;
+    text-align: center;
+    position:  absolute;
+    top: 50%;
+    margin-top: -180px;
+    left: 50%;
+    margin-left: -290px;
+}

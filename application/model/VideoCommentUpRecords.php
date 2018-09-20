@@ -1,0 +1,1 @@
+<?phpnamespace app\model;use think\Model;class VideoCommentUpRecords extends Model{    /*protected $createTime = 'pub_datetime';    protected $updateTime = '';*/}

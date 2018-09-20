@@ -1,0 +1,71 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="c-title" class="control-label col-xs-12 col-sm-2">活动标题:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-begin_time" class="control-label col-xs-12 col-sm-2">开启时间:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-begin_time" data-rule="required" class="form-control datetimepicker" name="row[start_date]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-end_time" class="control-label col-xs-12 col-sm-2">结束时间:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" data-rule="required" class="form-control datetimepicker" name="row[end_date]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-content" class="control-label col-xs-12 col-sm-2">活动内容:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" data-rule="required" class="form-control" data-rule="required" rows="10" name="row[content]"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">通知类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[type]', ['1'=>'系统消息', '2'=>'App弹屏'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">推送状态:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[is_push]', ['0'=>'进行推送','1'=>已推送, '2'=>'放弃推送'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-url" class="control-label col-xs-12 col-sm-2">跳转链接:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-url" data-rule="required" class="form-control" name="row[url]" type="text" value="">
+
+            <!--<textarea id="c-title" class="form-control" data-rule="required" rows="10" name="row[title]"></textarea>-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-convert" class="control-label col-xs-12 col-sm-2">封面图:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-convert" class="form-control" size="50" data-rule="required" name="row[convert]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-convert" class="btn btn-danger plupload" data-input-id="c-convert" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"  data-multiple="true" data-preview-id="p-convert"><i class="fa fa-upload"></i> 上传</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-convert"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-convert"></ul>
+        </div>
+    </div>
+   
+    <div class="form-group hide layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+<script src="http://cdn.demo.fastadmin.net/assets/js/require.js" data-main="http://cdn.demo.fastadmin.net/assets/js/require-backend.min.js?v=1.0.1"></script>
+
+

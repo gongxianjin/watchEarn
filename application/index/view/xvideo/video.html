@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<meta name="referrer" content="never">
+<head>
+	<title>Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="__STATIC__video.js/css/style.css?s=20180308" />
+  <link rel="stylesheet" href="__STATIC__video.js/css/video-js.css?s=20180309" />
+	<script type="text/javascript" src="__STATIC__js/jquery.min.js?s=20180309" ></script>
+<script type="text/javascript" src="__STATIC__video.js/js/video.min.js?s=20180309"></script>
+<script type="text/javascript" src="__STATIC__video.js/js/videojs-ie8.min.js?s=20180309"></script>
+</head>
+<style>
+	*{margin:0px;padding:0px;}
+    .ju-video-dimensions{height:100%!important;width:100%}
+    .video-js{width:100%;height:100%;}
+</style>
+<body style="height:100%;">
+	<!-- <video id="ju-video"  src="{$video.video_url}" controls="controls" autoplay="autoplay" height="100%" width="100%" poster="{$video.video_cover}"></video> -->
+    {if strpos($video.video_url,"youtube.com") !== false }
+    <iframe src="{$video.video_url}" width="100%" height="100%">
+
+    </iframe>
+    {else}
+    <video id="ju-video" class="video-js vjs-default-skin vjs-big-play-centered" controls poster="{$video.video_cover}"  x5-video-player-type="h5" loop="loop" x-webkit-airplay="true" >
+        <source src="{$video.video_url}" type="video/mp4">
+    </video>
+    {/if}
+
+	<script type="text/javascript">
+$(function(){
+  var options = {
+    controls: true,
+    autoplay: false,
+    preload: 'auto',
+    poster: "{$video.video_cover}"
+  };
+  var player = videojs('ju-video', options, function onPlayerReady() {
+    // this.play();
+    this.on('ended', function() {
+      videojs.log('this video ended');
+    });
+  });
+});
+</script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Me</title>
+    <link rel="stylesheet" href="../css/cssRest.css" />
+    <link rel="stylesheet" href="../js/swiper/swiper-3.4.1.min.css" />
+    <link rel="stylesheet" href="../css/mine.css?t=0419.03" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div id="app" v-cloak>
+	<header>
+		<div class="headerTop">
+			<span v-if="isLogin" v-text="nickname" class="nickname"></span>
+			<img :src="headimg"/>
+			<span v-if="isLogin"   v-text="invitation_code" class="goLogin"></span><!--登录状态显示我的邀请码-->
+			<span  v-else   @click="goLogin" v-text="invitation_code" class="goLogin"></span><!--未登录去登录-->
+		</div>
+		<div class="login">
+			<ul>
+				<li><a href="incomeDetails.html?type=1"><span>Coins</span><label v-text="gold_flag" id="mygold"></label></a></li>
+
+				<!--真实用户-->
+				<div v-if="isLogin">
+					<li>
+						<a href="incomeDetails.html?type=2">
+							<span>Balance</span>
+							<label  v-text="balance+'$'"></label>
+						</a>
+					</li>
+				</div>
+				<div v-else>
+					<li @click="showRe()">
+						<a href="javascript:void(0)">
+							<span>Balance</span>
+							<label  v-text="balance+'$'"></label>
+						</a>
+					</li>
+				</div>
+
+				<li style="border-right: none;">
+					<a href="incomeDetails.html?type=2">
+						<span>Total Income</span>
+						<label v-text="total_balance+'$'"></label>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</header>
+	
+   <!-- 任务大厅-->
+   <div class="navList">
+   	  <ul>
+			<li>
+				<a href="task_hall.html">
+					<img src="../images/task.png" />
+					<span>Daily Challenge </span>
+					<!--<i v-show="unTisk"></i>-->
+					<em class="back"></em>
+				</a>
+			</li>
+			<li v-show="!is_hidden_first_mission">
+				<!--isNewRed是否提现1元新手红包 false 没有 true 已完-->
+				<!--isOne true已经领取-->
+				<div v-if="isLogin">
+					<a  href="1yuan_withdraw.html">
+						<img src="../images/tixian.png" />
+						<span>Novice Bonus</span>
+						<!--<label>Novice Bonus</label>-->
+						<em class="back"></em>
+					</a>
+				</div>
+			   <div v-else>
+				   <a  href="javascript:void(0)" @click="showRe()">
+					   <img src="../images/tixian.png" />
+					   <span>Novice Bonus</span>
+					  <!-- <label>Novice Bonus</label>-->
+					   <em class="back"></em>
+				   </a>
+			   </div>
+			</li>
+
+			<li>
+				<a href="contactUs.html">
+					<img src="../images/msg.png" />
+					<span>Contact Us</span>
+				<!--	<i v-show="newNews"></i>-->
+					<em class="back"></em>
+				</a>
+			</li>
+   	  </ul>
+   </div>
+  
+   <div class="inviteCode" v-show="share_code_status" id="yaoqing">
+   	  <a href="javascript:">
+   	  	<img src="../images/code.png" />
+   	  	  <span>Enter your inviter's code</span>
+   	  	  <i class="back"></i>
+   	  </a>
+   </div>
+
+   <div class="gold">
+   	<ul>
+   		<li>
+   			<a href="settings.html">
+   				<img src="../images/set.png"/>
+   				<span>Settings </span>
+   				<i class="back"></i>
+   			</a>
+   		</li>
+   	</ul>
+   </div>
+
+   
+   <!--输入邀请码注册弹层-->
+<div class="registered1">
+	<div class="regCon" >
+		<img src="../images/login.png" onclick="gotoAPPLogin()" />
+	</div>
+</div>
+
+    <!--新人一元提现注册弹窗-->
+	<div class="registered">
+		<div class="regCon">
+			<h5>Login</h5>
+			<p>For Info security</p>
+			<p>please login to withdraw $1</p>
+			<a  onclick="gotoAPPLogin()">Login</a>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script type="text/javascript" src="../js/common.js?t=0419.01"></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/user.js"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+</html>

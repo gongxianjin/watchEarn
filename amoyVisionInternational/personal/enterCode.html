@@ -1,0 +1,229 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <title>Enter Invite code</title>
+    <link rel="shortcut icon" href="../images/juxinwen.ico">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+              oSize = docEl.clientWidth / 3.75;
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            font-family: PingFangSC-Regular;
+            overflow-y: scroll;
+            background: #f6c885;
+        }
+        #content input[type=text] {
+            top: 2.598rem;
+            width: 2.53rem;
+            height: 0.5rem;
+            outline: none;
+            text-indent: .16rem;
+            font-size: 0.3rem;
+            border: none;
+            /* box-shadow: inset -0.01rem 0.01rem 0.02rem 0 rgba(0, 0, 0, 0.50); */
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            letter-spacing: .06rem;
+            background: #cacaca;
+            margin-top: 2.6rem;
+            margin-left: .61rem;
+        }
+        #content input[type=text]::placeholder {
+            font-size: 0.24rem;
+            color: #999999;
+            letter-spacing: 0;
+        }
+        #content {
+            width: 100%;
+            height: 100%;
+            background: url("../images/invatation_codes.png") no-repeat;
+            background-size: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+         .footer {
+         	margin-top:110%;
+         }
+        .footer a {
+            font-size: 0.16rem;
+            color: #FFFFFF;
+           /* position: absolute;*/
+            bottom: 0.48rem;
+            left: 1.24rem;
+        }
+
+        .description {
+            text-align: left;
+            line-height: 0.2rem;
+            width: 2.78rem;
+            margin: 0 auto;
+            top: 3.2rem;
+            display: block;
+            box-sizing: border-box;
+            font-size: 0.14rem;
+            color: #333333;
+            margin-top: .6rem;
+        }
+
+        #open {
+            width: 2.53rem;
+            height: .36rem;
+          /*  position: absolute;*/
+            left: 0.62rem;
+            top: 4.5rem;
+            z-index: 999;
+            background: #f6c885;
+            color: #333333;
+            font-size: .2rem;
+            text-align: center;
+            line-height: .36rem;
+            -webkit-border-radius: .04rem;
+            -moz-border-radius: .04rem;
+            border-radius: .04rem;
+            margin-top: .2rem;
+            margin-left: .6rem;
+        }
+
+        #error {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        #information {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 2.15rem;
+            height: 1.26rem;
+            z-index: 9999999; /*这个数值要足够大，才能够显示在最上层*/
+            display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ /* OLD - Firefox 19- (buggy but mostly works) */
+            display: -ms-flexbox; /* TWEENER - IE 10 */
+            display: -webkit-flex; /* NEW - Chrome */
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: center;
+            -ms-flex-pack: justify;
+            justify-content: center;
+            font-size: 0.16rem;
+            color: #FFFFFF;
+            background: rgba(2, 2, 2, 0.7);
+            border-radius: 0.08rem;
+            padding: 0 .2rem;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body .layui-m-layer .layui-m-layer-msg{
+        	bottom:80px!important;
+        }
+        .desc{
+            position: fixed;
+          top:3.2rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%;height: 3rem;position: fixed;top: 0;" id="adClick">
+
+</div>
+
+<div id="content">
+        <input type="text" placeholder="Enter invitation code" id="invite-code">
+       <div class="desc">
+           <p class="description">Enter invitation code, you'll get 1000 coins and your friend will be well paid as well.</p>
+           <div id="open" @click="click">OK</div>
+       </div>
+</div>
+<div id="error">
+    <div id="information"></div>
+</div>
+<script type="text/jscript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/libs/axios.min.js?t=1"></script>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/Android.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/layer/layer.js"></script>
+
+ <script type="text/javascript">
+     $("#adClick").click(function () {
+         personal.openGoogleAd("{adPageType:4}");
+     });
+ 	var dataParam= GetBaseMsg();
+ 	var app = new Vue({
+ 		el:'#content',
+ 		data:function(){
+ 			return{
+
+ 			}
+ 		},
+        created:function(){
+        },
+ 		methods:{
+ 			click:function(){
+            var code = $("#invite-code").val();
+            if(code.length < 1 || code.length > 11){
+                    layer.open({
+                    content: 'Enter Invite code'
+                    ,skin: 'msg'
+                    ,time: 2 //2秒后自动关闭
+                  });
+                return false;
+              }
+               pam +='&code_or_phone='+code;//传参
+               instance.post(global.url+'mission_new/handler?id=11',pam)
+               .then(function(res){
+               	 if(res.data.code == 200){
+	                   setTimeout(function(){
+                           window.WebViewJavascriptBridge.callHandler('toMePage',data, function(responseData) {});
+                       },2000)
+
+	               }else{
+                     layer.open({
+                         content:res.data.msg
+                         ,skin: 'msg'
+                         ,time: 2 //2秒后自动关闭
+                     });
+                 }
+
+               })
+
+ 			}
+ 		}
+ 	});
+
+ </script>
+</body>
+</html>

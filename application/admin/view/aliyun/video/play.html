@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>play</title>
+</head>
+<body>
+
+</body>
+<link rel="stylesheet" href="//g.alicdn.com/de/prismplayer/2.6.0/skins/default/aliplayer-min.css"/>
+<script type="text/javascript" src="//g.alicdn.com/de/prismplayer/2.6.0/aliplayer-min.js"></script>
+<script>
+    var vid = "{$aliyunVideoId}";
+    var cover = "{$cover}";
+    var auth = "{$auth}";
+    playVideo(vid,cover,auth);
+    function playVideo(vid,cover,auth) {
+        var palyerDom = document.createElement('div');
+        palyerDom.id = 'J_prismPlayer';
+        palyerDom.style.width = '100%';
+        palyerDom.style.height = '720px';
+        palyerDom.className = 'prism-player';
+        var body = document.getElementsByClassName('content');
+        if (body.length) {
+            body[0].appendChild(palyerDom);
+            var player = new Aliplayer({
+                id: "J_prismPlayer",
+                autoplay: true,
+                width: "100%",
+                height: "720px",
+                vid: vid,
+                playauth:auth ,
+                cover: cover
+            });
+        }
+    }
+</script>
+</html>

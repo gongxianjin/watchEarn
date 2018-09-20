@@ -1,0 +1,23 @@
+/* Add here all your CSS customizations */
+
+
+.mainbox { clear:both; width:100%; }
+.subbox1 { float:left; width:200px; margin-bottom:10px; }
+.subbox2 { float:left; width:320px; margin-left:9px; }
+.textinput { padding: 2px 2px 7px 3px; }
+.error   { color: #C73636; font-size:14pt; font-weight:normal; }
+.success { color: #92C736; font-size:14pt; font-weight:normal; }
+
+.paginate_active { padding:2px 2px 2px 2px; font-weight:bold; font-size:14pt }
+.paginate { padding:2px 2px 2px 2px; }
+
+.clock {
+    border:none;
+    z-index:20;
+    font-size:18pt;
+    padding-left:8px;
+    padding-top:2px;
+    font-family: Arial;
+    color:#6B6B6B;
+    background-color: white;
+}

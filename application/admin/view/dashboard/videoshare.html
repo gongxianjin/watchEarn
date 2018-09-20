@@ -1,0 +1,193 @@
+<style type="text/css">
+    .sm-st {
+        background:#fff;
+        padding:20px;
+        -webkit-border-radius:3px;
+        -moz-border-radius:3px;
+        border-radius:3px;
+        margin-bottom:20px;
+        -webkit-box-shadow: 0 1px 0px rgba(0,0,0,0.05);
+        box-shadow: 0 1px 0px rgba(0,0,0,0.05);
+    }
+    .sm-st-icon {
+        width:60px;
+        height:60px;
+        display:inline-block;
+        line-height:60px;
+        text-align:center;
+        font-size:30px;
+        background:#eee;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        border-radius:5px;
+        float:left;
+        margin-right:10px;
+        color:#fff;
+    }
+    .sm-st-info {
+        font-size:12px;
+        padding-top:2px;
+    }
+    .sm-st-info span {
+        display:block;
+        font-size:24px;
+        font-weight:600;
+    }
+    .orange {
+        background:#fa8564 !important;
+    }
+    .tar {
+        background:#45cf95 !important;
+    }
+    .sm-st .green {
+        background:#86ba41 !important;
+    }
+    .pink {
+        background:#AC75F0 !important;
+    }
+    .yellow-b {
+        background: #fdd752 !important;
+    }
+    .stat-elem {
+
+        background-color: #fff;
+        padding: 18px;
+        border-radius: 40px;
+
+    }
+
+    .stat-info {
+        text-align: center;
+        background-color:#fff;
+        border-radius: 5px;
+        margin-top: -5px;
+        padding: 8px;
+        -webkit-box-shadow: 0 1px 0px rgba(0,0,0,0.05);
+        box-shadow: 0 1px 0px rgba(0,0,0,0.05);
+        font-style: italic;
+    }
+
+    .stat-icon {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .st-red {
+        background-color: #F05050;
+    }
+    .st-green {
+        background-color: #27C24C;
+    }
+    .st-violet {
+        background-color: #7266ba;
+    }
+    .st-blue {
+        background-color: #23b7e5;
+    }
+
+    .stats .stat-icon {
+        color: #28bb9c;
+        display: inline-block;
+        font-size: 26px;
+        text-align: center;
+        vertical-align: middle;
+        width: 50px;
+        float:left;
+    }
+
+    .stat {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        margin-right: 10px; }
+    .stat .value {
+        font-size: 20px;
+        line-height: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500; }
+    .stat .name {
+        overflow: hidden;
+        text-overflow: ellipsis; }
+    .stat.lg .value {
+        font-size: 26px;
+        line-height: 28px; }
+    .stat.lg .name {
+        font-size: 16px; }
+    .stat-col .progress {height:2px;}
+    .stat-col .progress-bar {line-height:2px;height:2px;}
+
+    .item {
+        padding:30px 0;
+    }
+    .show-count{
+        width: 100%;
+        height: 50px;
+    }
+    .show-count li{
+        list-style: none;
+        float: left;
+        width: 20%;
+    }
+</style>
+<div class="panel panel-default panel-intro">
+    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li class=""><a href="/admin/dashboard/index" >数据统计</a></li>
+            <li class=""><a href="/admin/dashboard/apprentice" >收徒统计</a></li>
+            <li class=""><a href="/admin/dashboard/user" >用户统计</a></li>
+            <li class=""><a href="/admin/dashboard/video" >视频统计</a></li>
+            <li class=""><a href="/admin/dashboard/news" >新闻统计</a></li>
+            <li class=""><a href="/admin/dashboard/cash" >提现统计</a></li>
+            <li class=""><a href="/admin/dashboard/downloadChannel" >下载渠道</a></li>
+            <li class="active"><a href="/admin/dashboard/videoShare" >分享视频渠道</a></li>
+            <li class=""><a href="/admin/dashboard/invitationCode" >分享邀请码渠道</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="row">
+                    <h4>总数统计</h4>
+                    <ul class="show-count" >
+                        <li>分享总数：<span>{$data.share_count}</span></li>
+                        <li>今日分享总数：<span>{$data.today_share_count}</span></li>
+                    </ul>
+
+                    <!--今日下载-->
+                    <div id="toolbar" class="toolbar">
+                        <h3>下载统计</h3>
+                    </div>
+
+                    <form id="countform" class="form-horizontal form-commonsearch" action="#">
+                        <fieldset>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3"><label for="range_time" class="control-label col-xs-4">自定义搜索</label>
+                                    <div class="col-xs-8">
+                                        <input type="hidden" class="form-control operate" name="field-range_time" data-name="range_time" value="RANGE" readonly="">
+                                        <input type="datetime" class="form-control datetimeranges" name="range_time" value="" placeholder="添加時間" id="range_time" data-index="5">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="col-sm-8 col-xs-offset-4">
+                                        <!--     <button type="submit" class="btn btn-success">提交</button>  -->
+                                        <div id="search-button" type="submit" class="btn btn-success">提交</div>
+                                        <button type="reset" class="btn btn-default">重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <div class="col-lg-12">
+                        <div id="today_echart" style="height:400px;width:100%;"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
