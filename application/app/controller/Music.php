@@ -33,7 +33,7 @@ class Music extends BaseController{
 
         //是否存在缓存
 
-        $cache = cache('musicList');
+        $cache = cache('musicList_'.$params['id'])[$page]??[];
 
         if($cache){
 
@@ -44,7 +44,7 @@ class Music extends BaseController{
 
             $data = $model->getMusicListByTid($params['id'],$page,$pageSize);
             //设置缓存
-            cache('musicList',$data,['expire'=>60*30]);
+            cache('musicList_'.$params['id'],[$page=>$data],['expire'=>60*30]);
         }
 
         return out($data,'200','Successful operation');

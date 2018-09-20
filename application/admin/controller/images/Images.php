@@ -124,7 +124,7 @@ class Images extends Backend{
      */
     public function edit($ids = null){
 
-        $info = $result = $this->model->where(['id'=>$ids])->find();
+        $info = $this->model->where(['id'=>$ids])->find();
 
         if ($this->request->isPost()){
 

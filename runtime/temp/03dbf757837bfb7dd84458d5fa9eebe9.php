@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:92:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\music\bgtype\index.html";i:1537435288;s:88:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\layout\default.html";i:1536378849;s:85:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\common\meta.html";i:1536378849;s:87:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\common\script.html";i:1536378849;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:95:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\user\apprentice\index.html";i:1536996552;s:88:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\layout\default.html";i:1536378849;s:85:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\common\meta.html";i:1536378849;s:87:"E:\phpstudy\PHPTutorial\WWW\watchV2\public/../application/admin\view\common\script.html";i:1536378849;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -50,34 +50,45 @@
                             <!-- END RIBBON -->
                             <?php endif; ?>
                             <div class="content">
-                                <div class="panel panel-default panel-intro">
-    <?php echo build_heading(); ?>
-
-    <div class="panel-body">
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade active in" id="one">
-                <div class="widget-body no-padding">
-                    <div id="toolbar" class="toolbar">
-                        <?php echo build_toolbar('refresh,add,delete,more'); ?>
-                      <div class="dropdown btn-group <?php echo $auth->check('wechat/config/multi')?'':'hide'; ?>">
-                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> <?php echo __('More'); ?></a>
-                            <ul class="dropdown-menu text-left" role="menu">
-                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> <?php echo __('Set to normal'); ?></a></li>
-                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> <?php echo __('Set to hidden'); ?></a></li>
-                            </ul>
-                        </div> 
-                    </div>
-                    <table id="table" class="table table-striped table-bordered table-hover" 
-                           data-operate-edit="<?php echo $auth->check('wechat/config/edit'); ?>" 
-                           data-operate-del="<?php echo $auth->check('wechat/config/del'); ?>" 
-                           width="100%">
-                    </table>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
+                                <div class="panel panel-default panel-intro">
+    <?php echo build_heading(); ?>
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <div class="dropdown btn-group">
+                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> <?php echo __('More'); ?></a>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=1"><i class="fa fa-eye"></i> 正常</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=2"><i class="fa fa-eye-slash"></i>禁用</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="is_cross_read_level=0"><i class="fa fa-eye"></i> 解封</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="is_cross_read_level=1"><i class="fa fa-eye-slash"></i>封锁</a></li>
+                            </ul>
+                        </div>
+
+                        <?php echo build_toolbar('refresh'); ?>
+                    </div>
+                    <table id="apprentice" class="table table-striped table-bordered table-hover"  width="100%">
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var ids= "<?php echo $ids; ?>";
+    var grandsonids= "<?php echo $grandsonids; ?>";
+    var meid= "<?php echo $meid; ?>";
+    var passwd= "<?php echo $passwd; ?>";
+    var type= "<?php echo $type; ?>";
+    var ip= "<?php echo $ip; ?>";
+    var level= "<?php echo $level; ?>";
+    var leveltype= "<?php echo $leveltype; ?>";
+</script>
 
                             </div>
                         </div>

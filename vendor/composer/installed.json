@@ -119,6 +119,59 @@
         ]
     },
     {
+        "name": "karsonzhang/fastadmin-addons",
+        "version": "1.1.4",
+        "version_normalized": "1.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/karsonzhang/fastadmin-addons.git",
+            "reference": "dc228912747efbba7a0cebd3ef15f41b22940d60"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/karsonzhang/fastadmin-addons/zipball/dc228912747efbba7a0cebd3ef15f41b22940d60",
+            "reference": "dc228912747efbba7a0cebd3ef15f41b22940d60",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "topthink/think-helper": ">=1.0.4",
+            "topthink/think-installer": ">=1.0.10"
+        },
+        "time": "2018-04-23T08:43:04+00:00",
+        "type": "library",
+        "extra": {
+            "think-config": {
+                "addons": "src/config.php"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "think\\": "src/"
+            },
+            "files": [
+                "src/common.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "xiaobo.sun",
+                "email": "xiaobo.sun@qq.com"
+            },
+            {
+                "name": "karsonzhang",
+                "email": "karsonzhang@163.com"
+            }
+        ],
+        "description": "addons package for fastadmin",
+        "homepage": "https://github.com/karsonzhang/fastadmin-addons"
+    },
+    {
         "name": "khanamiryan/qrcode-detector-decoder",
         "version": "1",
         "version_normalized": "1.0.0.0",
@@ -559,6 +612,44 @@
             "orm",
             "thinkphp"
         ]
+    },
+    {
+        "name": "topthink/think-helper",
+        "version": "v1.0.6",
+        "version_normalized": "1.0.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/top-think/think-helper.git",
+            "reference": "0c99dc625b0d2d4124e1b6ca15a3ad6f0125963f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/top-think/think-helper/zipball/0c99dc625b0d2d4124e1b6ca15a3ad6f0125963f",
+            "reference": "0c99dc625b0d2d4124e1b6ca15a3ad6f0125963f",
+            "shasum": ""
+        },
+        "time": "2017-04-05T07:15:37+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "think\\helper\\": "src"
+            },
+            "files": [
+                "src/helper.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "yunwuxin",
+                "email": "448901948@qq.com"
+            }
+        ],
+        "description": "The ThinkPHP5 Helper Package"
     },
     {
         "name": "topthink/think-image",

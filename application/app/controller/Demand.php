@@ -79,9 +79,9 @@ class Demand extends BaseController
 
         //标题
         $data['title'] = input('post.title');
-        if(empty($data['title'])){
-            return out([],10002,'Please Input Video Title!');
-        }
+//        if(empty($data['title'])){
+//            return out([],10002,'Please Input Video Title!');
+//        }
 
         //时长
         $data['duration'] = input('post.duration');
@@ -121,7 +121,7 @@ class Demand extends BaseController
         $tag = input('post.tag');
         $data['tag'] = '';
         if(!empty($tag)){
-            $data['tag'] = str_replace('-',',',$tag);
+            $data['tag'] = $tag;
             $tagModel = new Tag();
             $tagModel->where(['tag' => ['in',$data['tag']]])->update(['use_count' => ['exp','use_count + 1'] ]);
         }

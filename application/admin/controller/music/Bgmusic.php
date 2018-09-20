@@ -151,7 +151,7 @@ class Bgmusic extends Backend
                     if ($result !== false)
 
                     {
-                        cache('musicList',null);
+                        cache('musicList_'.$params['type_id'],null);
                         $this->success();
 
                     }
@@ -263,7 +263,7 @@ class Bgmusic extends Backend
                     $result = $this->model->where(['id'=>$ids])->update($params);
                     if ($result !== false)
                     {
-                        cache('musicList',null);
+                        cache('musicList_'.$params['type_id'],null);
                         $this->success();
                     }
                     else

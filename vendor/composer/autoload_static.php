@@ -9,6 +9,8 @@ class ComposerStaticInitad7c16f2f7eaa9bb8299268069008d4b
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '626dcc41390ebdaa619faa02d99943b0' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/common/customFunctions.php',
+        '9b552a3cc426e3287cc811caefa3cf53' => __DIR__ . '/..' . '/topthink/think-helper/src/helper.php',
+        '488987c28e9b5e95a1ce6b6bcb94606c' => __DIR__ . '/..' . '/karsonzhang/fastadmin-addons/src/common.php',
         'ddc3cd2a04224f9638c5d0de6a69c7e3' => __DIR__ . '/..' . '/topthink/think-migration/src/config.php',
     );
 
@@ -16,6 +18,7 @@ class ComposerStaticInitad7c16f2f7eaa9bb8299268069008d4b
         't' => 
         array (
             'think\\migration\\' => 16,
+            'think\\helper\\' => 13,
             'think\\composer\\' => 15,
             'think\\' => 6,
         ),
@@ -49,14 +52,19 @@ class ComposerStaticInitad7c16f2f7eaa9bb8299268069008d4b
         array (
             0 => __DIR__ . '/..' . '/topthink/think-migration/src',
         ),
+        'think\\helper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/topthink/think-helper/src',
+        ),
         'think\\composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-installer/src',
         ),
         'think\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/thinkphp/library/think',
-            1 => __DIR__ . '/..' . '/topthink/think-image/src',
+            0 => __DIR__ . '/..' . '/karsonzhang/fastadmin-addons/src',
+            1 => __DIR__ . '/../..' . '/thinkphp/library/think',
+            2 => __DIR__ . '/..' . '/topthink/think-image/src',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (

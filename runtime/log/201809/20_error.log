@@ -1,0 +1,9 @@
+---------------------------------------------------------------
+[ 2018-09-20T01:53:14-07:00 ] 127.0.0.1 127.0.0.1 GET /admin/announce/lists/edit/ids/7?dialog=1
+[ error ] [8]Array to string conversion[E:\phpstudy\PHPTutorial\WWW\watchV2\runtime\temp\369746929f54033fb9695a0a1d270915.php:10]
+---------------------------------------------------------------
+[ 2018-09-20T01:53:27-07:00 ] 127.0.0.1 127.0.0.1 GET /admin/announce/lists/edit/ids/7?dialog=1
+[ error ] [8]Array to string conversion[E:\phpstudy\PHPTutorial\WWW\watchV2\runtime\temp\369746929f54033fb9695a0a1d270915.php:10]
+---------------------------------------------------------------
+[ 2018-09-20T01:56:34-07:00 ] 127.0.0.1 127.0.0.1 POST /admin/announce/lists/edit/ids/7?dialog=1
+[ error ] [8]未定义数组索引: type_cover[E:\phpstudy\PHPTutorial\WWW\watchV2\application\admin\controller\announce\Lists.php:206]

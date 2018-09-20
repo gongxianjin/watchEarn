@@ -8,5 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
     '626dcc41390ebdaa619faa02d99943b0' => $vendorDir . '/khanamiryan/qrcode-detector-decoder/lib/common/customFunctions.php',
+    '9b552a3cc426e3287cc811caefa3cf53' => $vendorDir . '/topthink/think-helper/src/helper.php',
+    '488987c28e9b5e95a1ce6b6bcb94606c' => $vendorDir . '/karsonzhang/fastadmin-addons/src/common.php',
     'ddc3cd2a04224f9638c5d0de6a69c7e3' => $vendorDir . '/topthink/think-migration/src/config.php',
 );
